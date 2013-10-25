@@ -4,7 +4,6 @@
     Author     : ajmiro
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +12,8 @@
         <title>PandoAFP</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-    <body>
-        <%@taglib prefix="pandoAFP" uri="/WEB-INF/tlds/pandoAFP_tag_library.tld" %>
-        <pandoAFP:Pipeline ID="1"/>
+    <body>        
         <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>
-                
         <section id="document">
             <section id="header">
                 <div id="headerColumn1">
@@ -46,7 +42,7 @@
             
             <section id="breadcrumb">
                 <!-- <a href="foo.com">PipeLineName</a> &gt; <a href="foo.com">AJ Miro</a> &gt; Resume -->
-                <a href="foo.com"> <%= pipeline.getName()%> </a> &gt;                
+                <a href="foo.com"> ${pipeline.name} </a> &gt;                
             </section>                      
             
             <section id="dataSection">
@@ -61,10 +57,8 @@
                         <div class="listItem"><a href="foo.com">Dub, Eitan</a></div> -->
                         <% PandoAFP.Candidate[] candidates = pipeline.getCandidates(); 
                             for(int i = 0; i < candidates.length; i++){ %>
-                            <div class="listItem"><a href="Doctype.jsp?candidate=<%=candidates[i].getId()%>">
-                                    <%= candidates[i].getLastName()%>, <%= candidates[i].getFirstName() %></a></div>
-                            <%}%>  
-                            
+                            <div class="listItem"><a href="Doctype.jsp?candidate=<%=candidates[i].getId()%>"><%= candidates[i].getLastName()%>, <%= candidates[i].getFirstName() %></a></div>
+                            <%}%>                        
                     </section>                                       
                 </section>          
                 <section id="mainSection">
