@@ -10,13 +10,13 @@ package PandoAFP;
  */
 public class Pipeline {
     private String name;
-    int id;
+    private int id;    
   
     public Pipeline() {
     }
     
     public void Init(int id){
-        this.id = id;
+        this.setId(id);
     }
     
     /**
@@ -46,5 +46,23 @@ public class Pipeline {
         candidates[2] = new Candidate("Eitan", "Dub", 3);
         
         return candidates;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public Candidate findCandidate(int id){        
+        return new Candidate("AJ", "Miro", 1);
     }
 }

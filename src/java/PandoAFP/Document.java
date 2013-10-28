@@ -43,6 +43,11 @@ public class Document {
         this.name = name;
     }
 
+    public Document() {
+    }
+    
+    
+
     /**
      * @return the name
      */

@@ -4,6 +4,7 @@
     Author     : ajmiro
 --%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,9 +15,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <%@taglib prefix="pandoAFP" uri="/WEB-INF/tlds/pandoAFP_tag_library.tld" %>
-        <pandoAFP:Pipeline ID="1"/>
-        <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>
+        <%@taglib prefix="pandoAFP" uri="/WEB-INF/tlds/pandoAFP_tag_library.tld" %>        
+        <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>        
+        <jsp:setProperty name="pipeline" property="id" value="1"/>
                 
         <section id="document">
             <section id="header">
@@ -44,10 +45,9 @@
                 </div>
             </section>
             
-            <section id="breadcrumb">
-                <!-- <a href="foo.com">PipeLineName</a> &gt; <a href="foo.com">AJ Miro</a> &gt; Resume -->
-                <a href="foo.com"> <%= pipeline.getName()%> </a> &gt;                
-            </section>                      
+            <section id="breadcrumb">                
+                <%= pipeline.getName()%> &gt;
+            </section>
             
             <section id="dataSection">
                 <section id="dataList">
@@ -59,17 +59,22 @@
                         <!-- <div class="listItem"><a href="foo.com"> Miro, AJ </a></div>
                         <div class="listItem"><a href="foo.com">Dub, Adam</a></div>
                         <div class="listItem"><a href="foo.com">Dub, Eitan</a></div> -->
-                        <% PandoAFP.Candidate[] candidates = pipeline.getCandidates(); 
-                            for(int i = 0; i < candidates.length; i++){ %>
-                            <div class="listItem"><a href="Doctype.jsp?candidate=<%=candidates[i].getId()%>">
-                                    <%= candidates[i].getLastName()%>, <%= candidates[i].getFirstName() %></a></div>
-                            <%}%>  
+                            
+                        <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
+                            <div class="listItem">
+                               <a href="DocTypeServlet?candidate=${item.id}">
+                                    ${item.firstName}, ${item.lastName}
+                                </a>                                     
+                            </div>
+                        </c:forEach>
                             
                     </section>                                       
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
-                        <div id="listTitle"> &lt; Description based on current selection level &gt;<div>
+                        <div id="listTitle"> 
+                            &lt; Description based on current selection level &gt;
+                        </div>
                     </section>  
                     <section id="mainSectionContent">
                         <!--<div>-->
