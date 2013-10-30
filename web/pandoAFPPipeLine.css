@@ -109,6 +109,10 @@ img {
     width: 80%;
 }
 
+#candidateImage {
+    width: 100%;
+}
+
 #listTitle {
 
 }
@@ -169,4 +173,33 @@ img {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
+    width: 800px;   
+}
+
+#candidateDetails {
+
+    display: table;
+}
+
+#imageBorder {
+
+    display: table-cell;
+    border-width: thin;
+    width: 200px;
+    height: 200px;
+    border: black;
+    border-style: solid;
+}
+
+#candidateData {
+
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 5px;
+    text-align: left;
+}
+
+#pipelineData {
+
+    display: table-cell;
 }

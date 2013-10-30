@@ -11,8 +11,14 @@ package PandoAFP;
 public class Pipeline {
     private String name;
     private int id;    
+    
+    private Candidate[] candidates; //this is for testing only will be removed
   
     public Pipeline() {
+         this.candidates = new Candidate[3];
+        candidates[0] = new Candidate("AJ", "Miro", "1013 East 156 St <BR/> Bronx NY, 10455", 1);
+        candidates[1] = new Candidate("Adam", "Dub", "No Address", 2 );
+        candidates[2] = new Candidate("Eitan", "Dub", "No Address", 3);
     }
     
     public void Init(int id){
@@ -39,12 +45,7 @@ public class Pipeline {
      * @return the candidates for this pipeline
      */
     public Candidate[] getCandidates() {
-        //Get candidates for this pipeline from the data store
-        Candidate[] candidates = new Candidate[3];
-        candidates[0] = new Candidate("AJ", "Miro", 1);
-        candidates[1] = new Candidate("Adam", "Dub", 2 );
-        candidates[2] = new Candidate("Eitan", "Dub", 3);
-        
+        //Get candidates for this pipeline from the data store              
         return candidates;
     }
 
@@ -63,6 +64,7 @@ public class Pipeline {
     }
     
     public Candidate findCandidate(int id){        
-        return new Candidate("AJ", "Miro", 1);
+        //return new Candidate("AJ", "Miro", 1);
+        return candidates[id - 1];
     }
 }

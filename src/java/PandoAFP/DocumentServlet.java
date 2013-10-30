@@ -2,13 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package PandoAFP;
 
-import PandoAFP.Candidate;
-import PandoAFP.Pipeline;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ajmiro
  */
-public class DocTypeServlet extends HttpServlet {
+public class DocumentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -35,13 +32,13 @@ public class DocTypeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            Pipeline pipeline =(Pipeline)request.getSession().getAttribute("pipeline");
-            String candidateID = request.getParameter("candidate");
-            Candidate candidate = pipeline.findCandidate(Integer.parseInt(candidateID));
-            //request.setAttribute("candidateOBJ", candidate);     
-            request.getSession().setAttribute("candidateOBJ", candidate);
+            String documentTypeID = request.getParameter("doctype");
+            Candidate obj = (Candidate)request.getSession().getAttribute("candidateOBJ");
+            DocumentType dt = new DocumentType();
+            dt.initDocuments(Integer.parseInt(documentTypeID));
+            request.getSession().setAttribute("documenttype", dt);
             
-            request.getRequestDispatcher("Doctype.jsp?").forward(request, response);
+            request.getRequestDispatcher("Document.jsp?").forward(request, response);
         } finally {            
             out.close();
         }

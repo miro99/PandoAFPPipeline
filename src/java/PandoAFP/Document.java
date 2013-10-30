@@ -12,33 +12,25 @@ public class Document {
     
     private String name;
     private int id;            
-    private static DocumentType[] documentTypes;
-      
-    /**
-     * @return the documentTypes
-     */
-    public static DocumentType[] getDocumentTypes() {
-        //Get document types from data store
-        DocumentType[] docTypes = new DocumentType[3];
-        docTypes[0] = new DocumentType("Resume", 1);
-        docTypes[1] = new DocumentType("Profile", 2);
-        docTypes[2] = new DocumentType("Recommendations", 3);
-        documentTypes = docTypes;
+    //private static DocumentType[] documentTypes;
+    private DocumentType type;
+    private Candidate candidate;
+              
+//    public static Document[] getDocumentsOfDocumentType(){
+//        
+//        //Uset the variables type and candidate to filter out the returned
+//        //documents.
+//        
+//        //Get documents of specified type from data store.
+//        Document[] documents = new Document[3];
+//        documents[0] = new Document(1, "Resume 1");
+//        documents[1] = new Document(2, "Resume 2");
+//        documents[2] = new Document(3, "Resume 3");
+//        
+//        return documents;
+//    }
 
-        return documentTypes;
-    }
-    
-    public static Document[] getDocumentsOfDocumentType(DocumentType documentType){
-        //Get documents of specified type from data store.
-        Document[] documents = new Document[3];
-        documents[0] = new Document(1, "Resume 1");
-        documents[1] = new Document(2, "Resume 2");
-        documents[2] = new Document(3, "Resume 3");
-        
-        return documents;
-    }
-
-    private Document(int id, String name) {
+    protected Document(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -60,6 +52,20 @@ public class Document {
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(DocumentType type) {
+        this.type = type;
+    }
+
+    /**
+     * @param candidate the candidate to set
+     */
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
     }
     
     

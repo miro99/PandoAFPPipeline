@@ -73,12 +73,26 @@
                 <section id="mainSection">
                     <section id="dataHeader">
                         <div id="listTitle"> 
-                            &lt; Description based on current selection level &gt;
+                            <!--&lt; Description based on current selection level &gt;-->
+                            &lt; Pipeline Information &gt;
                         </div>
                     </section>  
                     <section id="mainSectionContent">
                         <!--<div>-->
-                            <img src='Images/testImage.jpg'/>
+                        <!-- <img src='Images/testImage.jpg'/> -->
+                             <!--<div id="candidateDetails">
+                                <div id="imageBorder">                                    
+                                    <img id="candidateImage" src="CandidateImage/?candidate=100"/>
+                                </div>
+                                <div id="candidateData">
+                                        AJ Miro<br/>
+                                        1013 East 156 St<br/>
+                                        Bronx NY, 10455 apt 2
+                                </div>
+                            </div>-->       
+                             <div id="pipelineData">
+                                 Name: ${pipeline.name}
+                             </div>
                         <!--</div>-->
                     </section>
                  </section>

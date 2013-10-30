@@ -4,6 +4,8 @@
  */
 package PandoAFP;
 
+import java.awt.Image;
+
 /**
  *
  * @author ajmiro
@@ -13,7 +15,8 @@ public class Candidate {
     private String firstName;
     private String lastName;
     private int id;
-
+    private String address;           
+    
     /**
      * @return the firstName
      */
@@ -35,9 +38,17 @@ public class Candidate {
         return id;
     }
 
-    public Candidate(String firstName, String lastName, int id) {
+    public Candidate(String firstName, String lastName, String address, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
         this.id = id;
     }  
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }   
 }

@@ -4,9 +4,29 @@
         <servlet-name>DocTypeServlet</servlet-name>
         <servlet-class>DocTypeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CandidateImageServlet</servlet-name>
+        <servlet-class>PandoAFP.CandidateImageServlet</servlet-class>
+        <init-param>
+            <param-name>candidateID</param-name>
+            <param-value/>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>DocumentServlet</servlet-name>
+        <servlet-class>PandoAFP.DocumentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DocTypeServlet</servlet-name>
         <url-pattern>/DocTypeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CandidateImageServlet</servlet-name>
+        <url-pattern>/CandidateImage/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DocumentServlet</servlet-name>
+        <url-pattern>/Documents</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
