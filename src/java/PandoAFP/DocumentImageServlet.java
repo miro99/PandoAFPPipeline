@@ -4,13 +4,10 @@
  */
 package PandoAFP;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -22,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ajmiro
  */
-public class CandidateImageServlet extends HttpServlet {
+public class DocumentImageServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -35,44 +32,22 @@ public class CandidateImageServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");        
-        BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
-        FileInputStream fis;
+            throws ServletException, IOException {          
+        BufferedOutputStream outputStream = new BufferedOutputStream(response.getOutputStream());
         BufferedInputStream bis = null;
-        try {            
-            String candidateID = (String) request.getParameter("candidateID");            
-            /* TODO output your page here. You may use following sample code. */                
-            File imgFile = GetImageFromStore(candidateID);
-            fis = new FileInputStream(imgFile);
-            bis = new BufferedInputStream(fis);
-
-            response.setContentType("image/jpg");
-            response.setContentLength((int) imgFile.length());
-            response.setHeader("Content-Disposition", "inline;filename=\"" + imgFile.getName() + "\"");
-
-            byte[] buffer = new byte[1024];
-            for (int length; (length = bis.read(buffer)) > -1;) {
-                bos.write(buffer, 0, length);
-            }                            
-        }
-        finally {                        
-            bos.close();
+        try {
+            File image = loadImage(request);
+            FileInputStream is = new FileInputStream(image);
+            bis = new BufferedInputStream(is);
+            
+            initializeResponse(response, image);
+            writeImageToOutputStream(bis, outputStream);
+        } finally {                        
+            outputStream.close();
             if (bis != null) {
                 bis.close();
             }
         }
-    }
-    
-    public File GetImageFromStore(String id) throws FileNotFoundException{
-        File imgFile = null;
-        if (id.equals("1")) {
-            imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\code_monkey.jpg");            
-        }
-        else{
-            imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\Icon-user.png");
-        }
-        return imgFile;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -115,4 +90,33 @@ public class CandidateImageServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private File getImageFromStore(int id, int documentID, int page) {
+        File imgFile;
+        imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\testImage.jpg"); 
+        return imgFile;
+    }
+    
+    private File loadImage(HttpServletRequest request) {
+        int page = Integer.parseInt(request.getParameter("Page"));
+        int documentID = Integer.parseInt(request.getParameter("DocumentID"));
+        Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");          
+        File image = getImageFromStore(candidate.getId(), documentID, page);
+        return image;
+    }
+
+    private void initializeResponse(HttpServletResponse response, File image) {
+        response.setContentType("image/jpg");
+        response.setContentLength((int) image.length());            
+        StringBuilder header = new StringBuilder("inline;filename=\"");
+        header.append(image.getName()).append("\"");
+        response.setHeader("Content-Disposition", header.toString());
+    }
+
+    private void writeImageToOutputStream(BufferedInputStream bis, BufferedOutputStream outputStream) throws IOException {
+        byte[] buffer = new byte[1024];
+       for (int length; (length = bis.read(buffer)) > -1;) {
+           outputStream.write(buffer, 0, length);
+       }
+    }
 }
