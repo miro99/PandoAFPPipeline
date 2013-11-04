@@ -37,10 +37,8 @@ public class DocTypeServlet extends HttpServlet {
         try {
             Pipeline pipeline =(Pipeline)request.getSession().getAttribute("pipeline");
             String candidateID = request.getParameter("candidate");
-            Candidate candidate = pipeline.findCandidate(Integer.parseInt(candidateID));
-            //request.setAttribute("candidateOBJ", candidate);     
-            request.getSession().setAttribute("candidateOBJ", candidate);
-            
+            Candidate candidate = pipeline.findCandidate(Integer.parseInt(candidateID));            
+            request.getSession().setAttribute("candidateOBJ", candidate);            
             request.getRequestDispatcher("Doctype.jsp?").forward(request, response);
         } finally {            
             out.close();

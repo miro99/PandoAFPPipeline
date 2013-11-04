@@ -11,24 +11,11 @@ package PandoAFP;
 public class Document {
     
     private String name;
-    private int id;            
-    //private static DocumentType[] documentTypes;
+    private int id;
     private DocumentType type;
     private Candidate candidate;
-              
-//    public static Document[] getDocumentsOfDocumentType(){
-//        
-//        //Uset the variables type and candidate to filter out the returned
-//        //documents.
-//        
-//        //Get documents of specified type from data store.
-//        Document[] documents = new Document[3];
-//        documents[0] = new Document(1, "Resume 1");
-//        documents[1] = new Document(2, "Resume 2");
-//        documents[2] = new Document(3, "Resume 3");
-//        
-//        return documents;
-//    }
+    private int nextPage = -1;
+    private int prevPage = -1;
 
     protected Document(int id, String name) {
         this.id = id;
@@ -66,6 +53,34 @@ public class Document {
      */
     public void setCandidate(Candidate candidate) {
         this.candidate = candidate;
+    }
+
+    /**
+     * @return the nextPage
+     */
+    public int getNextPage() {
+        return nextPage;
+    }
+
+    /**
+     * @param nextPage the nextPage to set
+     */
+    public void setNextPage(int nextPage) {
+        this.nextPage = nextPage;
+    }
+
+    /**
+     * @return the prevPage
+     */
+    public int getPrevPage() {
+        return prevPage;
+    }
+
+    /**
+     * @param prevPage the prevPage to set
+     */
+    public void setPrevPage(int prevPage) {
+        this.prevPage = prevPage;
     }
     
     

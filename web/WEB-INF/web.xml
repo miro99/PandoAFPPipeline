@@ -20,6 +20,10 @@
         <servlet-name>DocumentImageServlet</servlet-name>
         <servlet-class>PandoAFP.DocumentImageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DocumentViewServlet</servlet-name>
+        <servlet-class>PandoAFP.DocumentViewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DocTypeServlet</servlet-name>
         <url-pattern>/DocTypeServlet</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>DocumentImageServlet</servlet-name>
         <url-pattern>/DocumentImage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DocumentViewServlet</servlet-name>
+        <url-pattern>/DocumentView</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -46,7 +46,8 @@ public class DocumentType {
         return types;
     }
     
-    public void initDocuments(int typeID){                 
+    public void initDocuments(int typeID){      
+        this.id = typeID;
         this.name = types[typeID - 1].name;
         //Get documents of specified type from data store.
         Document[] documents = new Document[3];
@@ -54,6 +55,10 @@ public class DocumentType {
         documents[1] = new Document(2, "Resume 2");
         documents[2] = new Document(3, "Resume 3");        
         this.documents = documents;                
+    }
+    
+    public Document getDocument(int id) {
+        return  documents[id-1];
     }
 
     /**

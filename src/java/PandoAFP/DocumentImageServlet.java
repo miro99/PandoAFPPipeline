@@ -9,7 +9,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -91,15 +90,15 @@ public class DocumentImageServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private File getImageFromStore(int id, int documentID, int page) {
+    private File getImageFromStore(int candidateID, int documentID, int page) {
         File imgFile;
         imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\testImage.jpg"); 
         return imgFile;
     }
     
     private File loadImage(HttpServletRequest request) {
-        int page = Integer.parseInt(request.getParameter("Page"));
-        int documentID = Integer.parseInt(request.getParameter("DocumentID"));
+        int page = Integer.parseInt(request.getParameter("page"));
+        int documentID = Integer.parseInt(request.getParameter("documentID"));
         Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");          
         File image = getImageFromStore(candidate.getId(), documentID, page);
         return image;
@@ -115,8 +114,9 @@ public class DocumentImageServlet extends HttpServlet {
 
     private void writeImageToOutputStream(BufferedInputStream bis, BufferedOutputStream outputStream) throws IOException {
         byte[] buffer = new byte[1024];
-       for (int length; (length = bis.read(buffer)) > -1;) {
-           outputStream.write(buffer, 0, length);
-       }
+        for (int length; (length = bis.read(buffer)) > -1;) {
+            outputStream.write(buffer, 0, length);
+        }
     }
+    
 }

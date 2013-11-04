@@ -61,7 +61,8 @@
                             
                         <c:forEach var="item" items="${documenttype.documents}" varStatus="loop">
                             <div class="listItem">
-                               <a href="DocumentView?document=${item.id}">
+                               <a href="DocumentView?candidate=${candidateOBJ.id}&document=${item.id}&page=1">
+                                <!-- <a href="DocumentImage?candidate=${candidateOBJ.id}&documentID=${item.id}&page=1"> -->
                                     ${item.name}
                                 </a>                                     
                             </div>

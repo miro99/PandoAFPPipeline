@@ -6,6 +6,7 @@ package PandoAFP;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ajmiro
  */
-public class DocumentServlet extends HttpServlet {
+public class DocumentViewServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -32,14 +33,10 @@ public class DocumentServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            String documentTypeID = request.getParameter("doctype");
-            Candidate obj = (Candidate)request.getSession().getAttribute("candidateOBJ");
-            DocumentType dt = new DocumentType();
-            dt.initDocuments(Integer.parseInt(documentTypeID));            
-            request.getSession().setAttribute("documenttype", dt);
-            
-            request.getRequestDispatcher("Document.jsp?").forward(request, response);
-        } finally {            
+            Document document = getDocumentFromRequest(request);
+            setDocumentNextPrevPages(request, document);
+            forwardToPage(request, response, document);
+        } finally {
             out.close();
         }
     }
@@ -84,4 +81,22 @@ public class DocumentServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void setDocumentNextPrevPages(HttpServletRequest request, Document document) throws NumberFormatException {
+        int currentPage = Integer.parseInt(request.getParameter("page"));
+        document.setNextPage(currentPage + 1);                       
+        document.setPrevPage(currentPage - 1);
+    }
+
+    private Document getDocumentFromRequest(HttpServletRequest request) throws NumberFormatException {
+        int documentID = Integer.parseInt(request.getParameter("document"));
+        DocumentType documentType = (DocumentType)request.getSession().getAttribute("documenttype");
+        Document document = documentType.getDocument(documentID);
+        return document;
+    }
+
+    private void forwardToPage(HttpServletRequest request, HttpServletResponse response, Document document) throws IOException, ServletException {
+        request.getSession().setAttribute("document", document);
+        request.getRequestDispatcher("DocumentView.jsp?").forward(request, response);
+    }
 }
