@@ -17,7 +17,6 @@
     <body>
         <%@taglib prefix="pandoAFP" uri="/WEB-INF/tlds/pandoAFP_tag_library.tld" %>        
         <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>        
-        <jsp:setProperty name="pipeline" property="id" value="1"/>
                 
         <section id="document">
             <section id="header">

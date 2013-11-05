@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/PandoAFPPipeline"/>
+<Context antiJARLocking="true" path="/PandoAFPPipeline">
+    <Resource name="jdbc/pando_afp" 
+              auth="Container" 
+              type="javax.sql.DataSource"
+              username="root"
+              password="0foobar0"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/pando_afp"
+              maxActive="100" 
+              maxIdle="30" 
+              maxWait="10000"          
+        />
+</Context>

@@ -24,6 +24,10 @@
         <servlet-name>DocumentViewServlet</servlet-name>
         <servlet-class>PandoAFP.DocumentViewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PipelineServlet</servlet-name>
+        <servlet-class>PandoAFP.PipelineServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DocTypeServlet</servlet-name>
         <url-pattern>/DocTypeServlet</url-pattern>
@@ -44,12 +48,17 @@
         <servlet-name>DocumentViewServlet</servlet-name>
         <url-pattern>/DocumentView</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PipelineServlet</servlet-name>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
+        <session-timeout> 
+           30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <!-- <welcome-file>index.jsp</welcome-file> -->
+        <welcome-file>Index</welcome-file>        
     </welcome-file-list>
 </web-app>

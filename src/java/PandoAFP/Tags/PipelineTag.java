@@ -9,13 +9,19 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import PandoAFP.Pipeline;
+import java.sql.SQLException;
+import javax.naming.NamingException;
 
 /**
  *
  * @author ajmiro
  */
 public class PipelineTag extends SimpleTagSupport {
-    private Pipeline pipeline = new Pipeline();
+    private Pipeline pipeline;
+
+    public PipelineTag() throws NamingException, SQLException {
+        this.pipeline = new Pipeline();
+    }
 
     /**
      * Called by the container to invoke this tag. The implementation of this

@@ -84,7 +84,7 @@
                                         ${candidateOBJ.firstName}, 
                                         ${candidateOBJ.lastName}
                                         <br/>
-                                        ${candidateOBJ.address}
+                                        ${candidateOBJ.title}
                                 </div>
                             </div>
                         <!--</div>-->

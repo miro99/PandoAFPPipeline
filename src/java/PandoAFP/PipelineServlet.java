@@ -2,14 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package PandoAFP;
 
-import PandoAFP.Candidate;
-import PandoAFP.DocumentType;
-import PandoAFP.Pipeline;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ajmiro
  */
-public class DocTypeServlet extends HttpServlet {
+public class PipelineServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -35,18 +35,33 @@ public class DocTypeServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-            //Here we need to get the pipeline and pass it to the documenttype
-            //object so that we can filter all document types by pipeline                        
-            Pipeline pipeline =(Pipeline)request.getSession().getAttribute("pipeline");
-            
-            String candidateID = request.getParameter("candidate");
-            Candidate candidate = pipeline.findCandidate(Integer.parseInt(candidateID));
-            request.getSession().setAttribute("candidateOBJ", candidate);
-            request.getRequestDispatcher("Doctype.jsp?").forward(request, response);
+        try {            
+            String strpipelineID = request.getParameter("pipelineID");            
+            Pipeline pipeline;
+            if (strpipelineID != null) {                                
+                //pipeline.setId(Integer.parseInt(strpipelineID));
+                pipeline = new Pipeline(Integer.parseInt(strpipelineID));
+            }
+            else {
+                //This is just for testing. We do not have a value being passed in
+                //at the moment. once we start testing against Andrews code
+                //we must fail here in order to indicate an error on his side.
+                strpipelineID = "1";
+                pipeline = new Pipeline(Integer.parseInt(strpipelineID));
+            }
+            forwardToPage(request, response, pipeline);
+        } catch (NamingException ex) {
+            Logger.getLogger(PipelineServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PipelineServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {            
             out.close();
         }
+    }
+    
+    private void forwardToPage(HttpServletRequest request, HttpServletResponse response, Pipeline pipeline) throws IOException, ServletException {
+        request.getSession().setAttribute("pipeline", pipeline);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
