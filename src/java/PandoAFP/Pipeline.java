@@ -205,4 +205,16 @@ public class Pipeline extends Data {
         getDocumentTypesFromStore();
         return documentTypes;
     }
+    
+    public DocumentType getDocTypeByID(int id) {
+        DocumentType foundDocumentType = null;
+        for (int i = 0; i < documentTypes.length; i++) {
+            DocumentType documentType = documentTypes[i];
+            if (documentType.getId() == id) {
+                foundDocumentType = documentType;
+                break;
+            }
+        }
+        return foundDocumentType;
+    }
 }
