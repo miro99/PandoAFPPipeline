@@ -4,6 +4,14 @@
  */
 package PandoAFP;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
+
 /**
  *
  * @author ajmiro
@@ -37,11 +45,7 @@ public class DocumentType {
     }
     
      public DocumentType[] getDocumentTypes() {
-        //Get document types from data store
-        DocumentType[] docTypes = new DocumentType[3];
-        docTypes[0] = new DocumentType("Resume", 1);
-        docTypes[1] = new DocumentType("Profile", 2);
-        docTypes[2] = new DocumentType("Recommendations", 3);
+        DocumentType[] docTypes = getDocumentTypesFromDataStore();
         types = docTypes;
         return types;
     }
@@ -66,5 +70,14 @@ public class DocumentType {
      */
     public Document[] getDocuments() {
         return documents;
+    }
+
+    private DocumentType[] getDocumentTypesFromDataStore() {        
+            //Get document types from data store
+            DocumentType[] docTypes = new DocumentType[3];
+            docTypes[0] = new DocumentType("Resume", 1);
+            docTypes[1] = new DocumentType("Profile", 2);
+            docTypes[2] = new DocumentType("Recommendations", 3);
+            return docTypes;
     }
 }
