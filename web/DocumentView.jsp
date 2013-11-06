@@ -48,7 +48,7 @@
              <section id="breadcrumb">                
                  <a href="index.jsp?pipeline=${pipeline.id}"> ${pipeline.name} </a> &gt;  
                  <a href="DocTypeServlet?candidate=${candidateOBJ.id}"> ${candidateOBJ.lastName}, ${candidateOBJ.firstName} </a> &gt;
-                 <a href="Documents?documenttype=${documenttype.id}"> ${documenttype.name} </a> &gt; ${document.name}
+                 <a href="Documents?doctype=${documenttype.id}"> ${documenttype.name} </a> &gt; ${document.name}
             </section>
             
             <section id="dataSection">                
