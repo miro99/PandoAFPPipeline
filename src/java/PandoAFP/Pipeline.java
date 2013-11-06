@@ -12,10 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 /**
  *
@@ -25,15 +22,16 @@ public class Pipeline extends Data {
     private String name;
     private int id;    
     
-    private Candidate[] candidates; //this is for testing only will be removed
+    private Candidate[] candidates;
+    private DocumentType[] documentTypes;
   
-    public Pipeline() {
-        
+    public Pipeline() {           
     }
     
-    public Pipeline(int id) throws NamingException, SQLException {
+    public Pipeline(int id) throws NamingException, SQLException {                
         this.id = id;
         getCandidatesFromStore();
+        getDocumentTypesFromStore();
     }
     
     public void Init(int id){
@@ -152,6 +150,39 @@ public class Pipeline extends Data {
             }
         }
     }
+    
+    private void getDocumentTypesFromStore() {
+        Connection connection = null;
+        try {            
+            connection = createDbConnection();
+            StringBuilder sbSqlStatement = new StringBuilder("SELECT * FROM document_type WHERE pipeline = ");
+            sbSqlStatement.append(this.id);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sbSqlStatement.toString());
+            
+            ArrayList<DocumentType> arrDocTypes = new ArrayList<DocumentType>();
+            while (resultSet.next()) {
+                String documentTypeName = resultSet.getString("name");
+                int documentTypeID = resultSet.getInt("id");
+                DocumentType documentType = new DocumentType(documentTypeName, documentTypeID);
+                arrDocTypes.add(documentType);
+            }
+            documentTypes = new DocumentType[0];
+            documentTypes = arrDocTypes.toArray(documentTypes);
+        } catch (SQLException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
+    }
 
     private StringBuilder createGetCandidateSQLStatement() {
         String getCandidateSql = "SELECT * FROM CANDIDATE WHERE PIPELINE = ";
@@ -165,5 +196,13 @@ public class Pipeline extends Data {
         StringBuilder sbGetNameSql = new StringBuilder(getNameSql);
         sbGetNameSql.append(this.id);
         return sbGetNameSql.toString();
+    }
+
+    /**
+     * @return the documentTypes
+     */
+    public DocumentType[] getDocumentTypes() {
+        getDocumentTypesFromStore();
+        return documentTypes;
     }
 }
