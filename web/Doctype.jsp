@@ -54,14 +54,14 @@
                         <div id="listTitle">Document Types<div>
                     </section>  
                            
-                    <section id="listItemSection">                     
-                       <c:forEach var="item" items="<%=doctype.getDocumentTypes()%>" varStatus="loop">
+                    <section id="listItemSection">                                             
+                        <c:forEach var="item" items="<%=pipeline.getDocumentTypes()%>" varStatus="loop">
                             <div class="listItem">
                                <a href="Documents?doctype=${item.id}">
                                     ${item.name}
                                 </a>                                     
                             </div>
-                        </c:forEach>     
+                        </c:forEach>    
                     </section>                                       
                 </section>          
                 <section id="mainSection">
