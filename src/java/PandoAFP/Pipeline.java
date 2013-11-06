@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  *
  * @author ajmiro
  */
-public class Pipeline {
+public class Pipeline extends Data {
     private String name;
     private int id;    
     
@@ -151,15 +151,6 @@ public class Pipeline {
                 connection.close();
             }
         }
-    }
-
-    private Connection createDbConnection() throws SQLException, NamingException {
-        //Open a connection to the data store
-        Context initialContext = new InitialContext();
-        Context context = (Context)initialContext.lookup("java:comp/env");
-        DataSource dataSource = (DataSource)context.lookup("jdbc/pando_afp");
-        Connection connection = (Connection)dataSource.getConnection();
-        return connection;
     }
 
     private StringBuilder createGetCandidateSQLStatement() {
