@@ -34,11 +34,10 @@ public class DocumentType {
     }
 
     public DocumentType() {
+        types = getDocumentTypesFromDataStore();
     }
     
      public DocumentType[] getDocumentTypes() {
-        DocumentType[] docTypes = getDocumentTypesFromDataStore();
-        types = docTypes;
         return types;
     }
     
