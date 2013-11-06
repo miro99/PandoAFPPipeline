@@ -42,8 +42,6 @@ public class DocumentType {
     }
     
     public void initDocuments(int pipelineID){      
-        //this.id = typeID;
-        //this.name = types[typeID - 1].name;
         //Get documents of specified type from data store.
         Document[] documents = new Document[3];
         documents[0] = new Document(1, "Resume 1");
