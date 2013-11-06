@@ -45,7 +45,8 @@
                 </div>
             </section>
             
-             <section id="breadcrumb">                
+             <section id="breadcrumb"> 
+                 <!-- Branch 2 -->
                  <a href="index.jsp?pipeline=${pipeline.id}"> ${pipeline.name} </a> &gt;  
                  <a href="DocTypeServlet?candidate=${candidateOBJ.id}"> ${candidateOBJ.lastName}, ${candidateOBJ.firstName} </a> &gt;
                  <a href="Documents?doctype=${documenttype.id}"> ${documenttype.name} </a> &gt; ${document.name}
