@@ -92,7 +92,12 @@ public class DocumentImageServlet extends HttpServlet {
 
     private File getImageFromStore(int candidateID, int documentID, int page) {
         File imgFile;
-        imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\testImage.jpg"); 
+        StringBuilder sbImageFilePath = new StringBuilder("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\CandidateFiles\\");
+        sbImageFilePath.append(candidateID).append("\\");
+        sbImageFilePath.append(documentID).append("\\");
+        sbImageFilePath.append(page).append(".png");
+        //imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\testImage.jpg"); 
+        imgFile = new File(sbImageFilePath.toString());
         return imgFile;
     }
     
@@ -105,7 +110,7 @@ public class DocumentImageServlet extends HttpServlet {
     }
 
     private void initializeResponse(HttpServletResponse response, File image) {
-        response.setContentType("image/jpg");
+        response.setContentType("image/png");
         response.setContentLength((int) image.length());            
         StringBuilder header = new StringBuilder("inline;filename=\"");
         header.append(image.getName()).append("\"");
