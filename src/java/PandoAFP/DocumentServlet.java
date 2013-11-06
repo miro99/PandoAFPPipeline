@@ -34,8 +34,10 @@ public class DocumentServlet extends HttpServlet {
         try {
             String documentTypeID = request.getParameter("doctype");
             Candidate obj = (Candidate)request.getSession().getAttribute("candidateOBJ");
-            DocumentType dt = new DocumentType();
-            dt.initDocuments(Integer.parseInt(documentTypeID));            
+            
+            Pipeline pipeline = (Pipeline)request.getSession().getAttribute("pipeline");                        
+            DocumentType dt = pipeline.getDocTypeByID(Integer.parseInt(documentTypeID));            
+            dt.initDocuments(pipeline.getId());
             request.getSession().setAttribute("documenttype", dt);
             
             request.getRequestDispatcher("Document.jsp?").forward(request, response);
