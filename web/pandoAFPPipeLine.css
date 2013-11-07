@@ -203,3 +203,16 @@ img {
 
     display: table-cell;
 }
+
+#mainSectionContentImageOnly {
+    padding-top: 10px;
+}
+
+#mainSectionImageOnly {
+    padding-top: 10px;
+    width: 100%;
+}
+
+#pageImage {
+    width: 100%;
+}
