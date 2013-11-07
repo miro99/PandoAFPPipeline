@@ -62,7 +62,7 @@
                         <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
                             <div class="listItem">
                                <a href="DocTypeServlet?candidate=${item.id}">
-                                    ${item.firstName}, ${item.lastName}
+                                    ${item.lastName}, ${item.firstName}
                                 </a>                                     
                             </div>
                         </c:forEach>
