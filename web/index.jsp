@@ -73,7 +73,7 @@
                     <section id="dataHeader">
                         <div id="listTitle">                             
                             <!-- &lt; Pipeline Information &gt; -->
-                            &lt; ${pipeline.name} &gt;
+                            ${pipeline.name}
                         </div>
                     </section>  
                     <section id="mainSectionContent">
