@@ -34,7 +34,7 @@
             </section>
         
             <section id="keyword">
-                <div id="filtersText">FILTERS:</div>
+                <div id="filtersText">FILTER:</div>
                 <div id="text">Keyword:</div>
                 <div id="txtInput">
                     <input id="keywordInput" type="text" name="txtkeyword" value="" />
@@ -51,7 +51,7 @@
             <section id="dataSection">
                 <section id="dataList">
                     <section id="dataHeader">
-                        <div id="listTitle">Candidates<div>
+                        <div id="listTitle">Candidate<div>
                     </section>  
                            
                     <section id="listItemSection">
