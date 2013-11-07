@@ -188,6 +188,7 @@ public class Pipeline extends Data {
         String getCandidateSql = "SELECT * FROM CANDIDATE WHERE PIPELINE = ";
         StringBuilder sbGetCandidateSql = new StringBuilder(getCandidateSql);
         sbGetCandidateSql.append(this.id);
+        sbGetCandidateSql.append(" ORDER BY last,first");
         return sbGetCandidateSql;
     }
 
