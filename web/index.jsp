@@ -35,7 +35,7 @@
         
             <section id="keyword">
                 <div id="filtersText">FILTER:</div>
-                <div id="text">Keyword:</div>
+                <div id="text">Search:</div>
                 <div id="txtInput">
                     <input id="keywordInput" type="text" name="txtkeyword" value="" />
                 </div>
@@ -51,7 +51,9 @@
             <section id="dataSection">
                 <section id="dataList">
                     <section id="dataHeader">
-                        <div id="listTitle">Candidate<div>
+                        <div id="titleborder">
+                            <div id="listTitle">Candidate<div>
+                        </div>
                     </section>  
                            
                     <section id="listItemSection">
@@ -71,7 +73,7 @@
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
-                        <div id="listTitle">                             
+                        <div id="listTitle2">                             
                             <!-- &lt; Pipeline Information &gt; -->
                             ${pipeline.name}
                         </div>
