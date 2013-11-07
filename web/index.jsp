@@ -71,9 +71,9 @@
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
-                        <div id="listTitle"> 
-                            <!--&lt; Description based on current selection level &gt;-->
-                            &lt; Pipeline Information &gt;
+                        <div id="listTitle">                             
+                            <!-- &lt; Pipeline Information &gt; -->
+                            &lt; ${pipeline.name} &gt;
                         </div>
                     </section>  
                     <section id="mainSectionContent">
