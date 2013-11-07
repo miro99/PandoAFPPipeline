@@ -52,16 +52,16 @@
                  <a href="Documents?doctype=${documenttype.id}"> ${documenttype.name} </a> &gt; ${document.name}
             </section>
             
-            <section id="dataSection">                
-                <section id="mainSection">
+            <section id="dataSectionImageOnly">                
+                <section id="mainSectionImageOnly">
                     <section id="dataHeader">
                         <div id="listTitle"> 
                             <!--&lt; Description based on current selection level &gt;-->
                             &lt; Pipeline Information &gt;
                         </div>
                     </section>  
-                    <section id="mainSectionContent">
-                        <img src="DocumentImage?page=${param.page}&documentID=${param.document}"/>
+                    <section id="mainSectionContentImageOnly">
+                        <img id="pageImage" src="DocumentImage?page=${param.page}&documentID=${param.document}"/>
                         <section id="pageControls">
                             <div id="pageDown">
                                <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.prevPage}"> &lt;</a>
