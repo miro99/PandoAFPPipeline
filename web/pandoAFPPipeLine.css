@@ -19,15 +19,15 @@ margin-left: auto;
     display: table;
     font-size: larger;
     font-family: "Arial";
-    background: DarkBlue;
+    background: white;
     height: 40px;
-    color: white;
+    color: darkgrey;
     font-weight: bold;
 }
 
 #headerColumn1 {
 
-    width: 100px;
+    width: 200px;
     display: table-cell;
     vertical-align: middle;
     padding-left: 10px;
@@ -38,6 +38,7 @@ margin-left: auto;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+    color: darkgrey;
 }
 
 html body {
@@ -60,28 +61,32 @@ html body {
     margin-top: 10px;
     font-size: large;
     padding-left: 10px;
+    color: darkgray
 }
 
 #keyword {
 
     display: table;
     width: 100%;
-    background: lightgray;
+    background: grey;
     height: 40px;
 }
 
 #text {
 
     display: table-cell;
-    width: 80px;
-    padding-left: 10px;
+    width: 50px;
+    padding-left: 10px;    
     vertical-align: middle;
+    color: white;
 }
 
 #txtInput {
 
     display: table-cell;
     vertical-align: middle;
+    text-align: right;
+    width: 300px;    
 }
 
 #dataSection {
@@ -95,12 +100,10 @@ html body {
     width: 30%;
     vertical-align: top;
     display: table-cell;
-    background: beige;
+    background: #F0F0F0;
 }
 
-#mainSection {
-
-    background: beige;
+#mainSection {    
     margin-left: 10px;
 }
 
@@ -113,14 +116,27 @@ img {
     width: 100%;
 }
 
-#listTitle {
+#listTitle {   
+    margin-right: auto;
+    margin-left: auto;
+}
 
+#listTitle2 {    
+    
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#titleborder {  
 }
 
 #keywordInput {
 
     width: 95%;
-    background: beige;
+    background: white;
+    border: none;
+    border-radius: 10px;
+    padding-left: 5px;
 }
 
 #rightSideHeader {
@@ -137,7 +153,7 @@ img {
     display: table-cell;
     vertical-align: middle;
     padding-left: 10px;
-    color: brown;
+    color: white;
 }
 
 #buttondiv {
@@ -157,9 +173,9 @@ img {
 #dataHeader {
 
     background: lightgray;
-    color: brown;
+    color: #888888;
     text-align: center;
-    font-family: arial;
+    font-family: arial;   
 }
 
 #listItemSection {
@@ -202,6 +218,20 @@ img {
 #pipelineData {
 
     display: table-cell;
+    font-size: x-large;
+    
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #80DB39),
+	color-stop(1, #FFFFFF)
+);
+background-image: -o-linear-gradient(bottom, #80DB39 0%, #FFFFFF 100%);
+background-image: -moz-linear-gradient(bottom, #80DB39 0%, #FFFFFF 100%);
+background-image: -webkit-linear-gradient(bottom, #80DB39 0%, #FFFFFF 100%);
+background-image: -ms-linear-gradient(bottom, #80DB39 0%, #FFFFFF 100%);
+background-image: linear-gradient(to bottom, #80DB39 0%, #FFFFFF 100%);
 }
 
 #mainSectionContentImageOnly {
@@ -262,3 +292,9 @@ img {
     padding-top: 10px;
     margin-bottom: 90px;
 }
+
+.listItem {
+    color: black;     
+    font-weight: bold;
+}
+a:link {color: black}
