@@ -55,7 +55,16 @@ public class DocumentType extends Data{
     }
     
     public Document getDocument(int id) {
-        return  documents[id-1];
+        //return  documents[id-1];
+        Document foundDoc = null;
+        for (int i = 0; i < documents.length; i++) {
+            Document document = documents[i];
+            if (document.getId() == id) {
+                foundDoc = document;
+                break;
+            }
+        }
+        return foundDoc;
     }
 
     /**
