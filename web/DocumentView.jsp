@@ -59,15 +59,25 @@
                             <!--&lt; Description based on current selection level &gt;-->
                             &lt; Pipeline Information &gt;
                         </div>
-                    </section>  
-                    <section id="mainSectionContentImageOnly">
+                    </section>                                
+                    <section id="mainSectionContentImageOnlyTop">                            
+                            <section id="pageControlsImageOnlyTop">
+                                <div id="pageDownImageOnlyTop">
+                                    <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.prevPage}"> <img src="Images/back arrow.png" height="100" width="100"/> </a>
+                                </div>
+                                <div id="pageUpImageOnlyTop">
+                                    <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.nextPage}"> <img src="Images/forward arrow.png" height="100" width="100"/> </a>
+                                </div>
+                            </section>
+                    </section>
+                    <section id="mainSectionContentImageOnly">                                                   
                         <img id="pageImage" src="DocumentImage?page=${param.page}&documentID=${param.document}"/>
-                        <section id="pageControls">
-                            <div id="pageDown">
-                               <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.prevPage}"> &lt;</a>
+                        <section id="pageControlsImageOnly">
+                            <div id="pageDownImageOnly">
+                                <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.prevPage}"> <img src="Images/back arrow.png" height="100" width="100"/> </a>
                             </div>
-                            <div id="pageUp">
-                               <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.nextPage}"> &gt;</a>
+                            <div id="pageUpImageOnly">
+                                <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.nextPage}"> <img src="Images/forward arrow.png" height="100" width="100"/> </a>
                             </div>
                         </section>
                     </section>
