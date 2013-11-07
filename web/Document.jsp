@@ -18,8 +18,8 @@
         <section id="document">
             <section id="header">
                 <div id="headerColumn1">
-                    <!-- PandoAFP -->
-                    <img src="Images/PandoAFP - Version 2.png"/>
+                    PandoAFP
+                    <!--<img src="Images/PandoAFP - Version 2.png"/>-->
                 </div>
             
                 <div id="headerColumn2">
