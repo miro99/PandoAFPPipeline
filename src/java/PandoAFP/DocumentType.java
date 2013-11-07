@@ -49,8 +49,8 @@ public class DocumentType extends Data{
         return types;
     }
     
-    public void initDocuments(int pipelineID) throws SQLException, NamingException{      
-        Document[] docs = getDocumentsFromStore(pipelineID);        
+    public void initDocuments(int pipelineID, Candidate candidate) throws SQLException, NamingException{      
+        Document[] docs = getDocumentsFromStore(pipelineID, candidate);        
         this.documents = docs;                
     }
     
@@ -74,7 +74,7 @@ public class DocumentType extends Data{
             return docTypes;
     }
 
-    private Document[] getDocumentsFromStore(int pipelineID) throws SQLException, NamingException {
+    private Document[] getDocumentsFromStore(int pipelineID, Candidate candidate) throws SQLException, NamingException {
         //Get documents of specified type from data store.
 //        Document[] docs = new Document[3];
 //        docs[0] = new Document(1, "Resume 1");
@@ -88,6 +88,7 @@ public class DocumentType extends Data{
             connection = createDbConnection();
             StringBuilder sbSqlGetDocumentsForPipelineAndDocument = new StringBuilder("SELECT * FROM document WHERE pipeline = ");
             sbSqlGetDocumentsForPipelineAndDocument.append(pipelineID).append(" AND document_type = ").append(this.id);
+            sbSqlGetDocumentsForPipelineAndDocument.append(" AND candidate = ").append(candidate.getId());
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sbSqlGetDocumentsForPipelineAndDocument.toString());            
             docs = new Document[0];
