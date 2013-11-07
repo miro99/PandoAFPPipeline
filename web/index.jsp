@@ -90,7 +90,7 @@
                                 </div>
                             </div>-->       
                              <div id="pipelineData">
-                                 Name: ${pipeline.name}
+                                ${pipeline.note}
                              </div>
                         <!--</div>-->
                     </section>
