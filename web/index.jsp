@@ -20,8 +20,8 @@
                 
         <section id="document">
             <section id="header">
-                <div id="headerColumn1">
-                    PandoAFP
+                <div id="headerColumn1">                    
+                    <img src="Images/Pando AFP.png"/>
                 </div>
             
                 <div id="headerColumn2">
