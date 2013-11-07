@@ -20,7 +20,8 @@ import javax.naming.NamingException;
  */
 public class Pipeline extends Data {
     private String name;
-    private int id;    
+    private int id;
+    private String note;
     
     private Candidate[] candidates;
     private DocumentType[] documentTypes;
@@ -198,6 +199,12 @@ public class Pipeline extends Data {
         sbGetNameSql.append(this.id);
         return sbGetNameSql.toString();
     }
+    
+    private String createGetNoteSQLStatement() {        
+        StringBuilder sbGetNoteSQL = new StringBuilder("SELECT * FROM PIPELINE WHERE ID = ");
+        sbGetNoteSQL.append(this.id);
+        return sbGetNoteSQL.toString();
+    }
 
     /**
      * @return the documentTypes
@@ -218,4 +225,39 @@ public class Pipeline extends Data {
         }
         return foundDocumentType;
     }
+
+    /**
+     * @return the note
+     */
+    public String getNote() throws SQLException, NamingException {
+        Connection connection = null;
+        ResultSet resultSet = null;
+        try {            
+            connection = createDbConnection();
+            String sqlStatement = createGetNoteSQLStatement();
+            Statement statement = connection.createStatement();
+            
+            resultSet = statement.executeQuery(sqlStatement);
+            if (resultSet.next()) {
+                return resultSet.getString("Note");
+            }
+            else {
+                return "Unnamed Pipeline";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } catch (NamingException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        }
+        finally {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }    
 }
