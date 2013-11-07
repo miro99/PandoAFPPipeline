@@ -216,3 +216,49 @@ img {
 #pageImage {
     width: 100%;
 }
+
+#pageControlsImageOnly {    
+    width: 100%;        
+}
+
+#pageDownImageOnly {    
+    text-align: left;
+    height: 10px;   
+    width: 100px;    
+}
+
+#pageUpImageOnly {    
+    text-align: right;
+    height: 10px;
+    width: 100px;
+    margin-left: 100px;
+    margin-top: -9px;
+}
+
+#mainSectionImageOnlyTop {
+    padding-top: 10px;
+    width: 100%;       
+}
+
+#pageControlsImageOnlyTop {    
+    width: 100%;        
+}
+
+#pageDownImageOnlyTop {    
+    text-align: left;
+    height: 10px;   
+    width: 100px;    
+}
+
+#pageUpImageOnlyTop {    
+    text-align: right;
+    height: 10px;
+    width: 100px;
+    margin-left: 100px;
+    margin-top: -9px;
+}
+
+#mainSectionContentImageOnlyTop {
+    padding-top: 10px;
+    margin-bottom: 90px;
+}
