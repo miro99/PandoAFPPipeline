@@ -32,18 +32,21 @@
                     
                 </div>
             </section>
-        
+        <form action="foo.jsp" method="POST">
             <section id="keyword">
                 <div id="filtersText">FILTER:</div>
                 <div id="text">Search:</div>
-                <div id="txtInput">
-                    <input id="keywordInput" type="text" name="txtkeyword" value="" />
-                </div>
-                <div id="buttondiv">
-                    <button id="goButton">GO</button>
-                </div>
+                
+                    <div id="txtInput">
+                        <input id="keywordInput" type="text" name="txtkeyword" value="" />
+                    </div>
+                    <div id="buttondiv">
+                        <!--<button id="goButton">GO</button>-->
+                        <input type="submit" value="GO"/>
+                    </div>
+
             </section>
-            
+        </form>            
             <section id="breadcrumb">                
                 <%= pipeline.getName()%> &gt;
             </section>
