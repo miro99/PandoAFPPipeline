@@ -105,9 +105,16 @@ public class Pipeline extends Data {
         this.id = id;
     }
     
-    public Candidate findCandidate(int id){        
-        //return new Candidate("AJ", "Miro", 1);
-        return candidates[id - 1];
+    public Candidate findCandidate(int id){                        
+        Candidate result = null;
+        for (int i = 0; i < candidates.length; i++) {
+            Candidate candidate = candidates[i];
+            if (candidate.getId() == id) {
+                result = candidate;
+                break;
+            }
+        }
+        return result;
     }
 
     private void getCandidatesFromStore() throws NamingException, SQLException {
