@@ -30,7 +30,7 @@ margin-left: auto;
     width: 200px;
     display: table-cell;
     vertical-align: middle;
-    padding-left: 10px;
+    
 }
 
 #headerColumn2 {
@@ -195,6 +195,8 @@ img {
 #candidateDetails {
 
     display: table;
+    font-size: x-large;
+    color: blue;
 }
 
 #imageBorder {
@@ -271,7 +273,7 @@ background-image: linear-gradient(to bottom, #80DB39 0%, #FFFFFF 100%);
 }
 
 #pageControlsImageOnlyTop {    
-    width: 100%;        
+    width: 100%;
 }
 
 #pageDownImageOnlyTop {    
@@ -298,3 +300,21 @@ background-image: linear-gradient(to bottom, #80DB39 0%, #FFFFFF 100%);
     font-weight: bold;
 }
 a:link {color: black}
+
+#resultDocumentType {
+    font-size: larger;
+}
+
+#resultCandidateName {
+    font-weight: bold;
+}
+
+#mainSectionContentSearchResults {
+    margin-top: 10px;
+}
+
+#documentTypeData {
+    display: table-cell;
+    font-size: x-large;
+    color: blue;
+}

@@ -16,7 +16,8 @@
     </head>
     <body>
         <%@taglib prefix="pandoAFP" uri="/WEB-INF/tlds/pandoAFP_tag_library.tld" %>        
-        <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>        
+        <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>
+        <jsp:useBean id="results" class="PandoAFP.Results" scope="session"/> 
         <jsp:setProperty name="pipeline" property="id" value="1"/>
                 
         <section id="document">
@@ -43,7 +44,7 @@
                 <div id="buttondiv">
                     <button id="goButton">GO</button>
                 </div>
-            </section> -->
+            </section>-->
             <form action="Search" method="POST">
             <section id="keyword">
                 <div id="filtersText">FILTER:</div>
@@ -61,9 +62,6 @@
             
              <section id="breadcrumb"> 
                  <!-- Branch 2 -->
-                 <a href="index.jsp?pipeline=${pipeline.id}"> ${pipeline.name} </a> &gt;  
-                 <a href="DocTypeServlet?candidate=${candidateOBJ.id}"> ${candidateOBJ.lastName}, ${candidateOBJ.firstName} </a> &gt;
-                 <a href="Documents?doctype=${documenttype.id}"> ${documenttype.name} </a> &gt; ${document.name}
             </section>
             
             <section id="dataSectionImageOnly">                
@@ -71,29 +69,19 @@
                     <section id="dataHeader">
                         <div id="listTitle"> 
                             <!--&lt; Description based on current selection level &gt;-->
-                            Document
+                            Search Results
                         </div>
                     </section>                                
-                    <section id="mainSectionContentImageOnlyTop">                            
-                            <section id="pageControlsImageOnlyTop">
-                                <div id="pageDownImageOnlyTop">
-                                    <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.prevPage}"> <img src="Images/back arrow.png" height="100" width="100"/> </a>
-                                </div>
-                                <div id="pageUpImageOnlyTop">
-                                    <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.nextPage}"> <img src="Images/forward arrow.png" height="100" width="100"/> </a>
-                                </div>
-                            </section>
-                    </section>
-                    <section id="mainSectionContentImageOnly">                                                   
-                        <img id="pageImage" src="DocumentImage?page=${param.page}&documentID=${param.document}"/>
-                        <section id="pageControlsImageOnly">
-                            <div id="pageDownImageOnly">
-                                <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.prevPage}"> <img src="Images/back arrow.png" height="100" width="100"/> </a>
-                            </div>
-                            <div id="pageUpImageOnly">
-                                <a href="DocumentView?candidate=${candidateOBJ.id}&document=${document.id}&page=${document.nextPage}"> <img src="Images/forward arrow.png" height="100" width="100"/> </a>
-                            </div>
-                        </section>
+                    
+                    <section id="mainSectionContentSearchResults">                                                                           
+                        <c:forEach var="item" items="<%=results.getSearchResults()%>" varStatus="loop">
+                            <div id="resultDocumentType">
+                                <a href="DocumentView?candidate=${item.candidate.id}&dt=${item.documentType.id}&document=${item.documentID}&page=1">${item.documentType.name}</a></br>
+                            </div>                            
+                            <div id="resultCandidateName">                                
+                                ${item.candidate.lastName}, ${item.candidate.firstName}</br></br>
+                            </div>                            
+                        </c:forEach>
                     </section>
                  </section>
             </section>

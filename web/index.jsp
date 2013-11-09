@@ -32,7 +32,7 @@
                     
                 </div>
             </section>
-        <form action="foo.jsp" method="POST">
+        <form action="Search" method="POST">
             <section id="keyword">
                 <div id="filtersText">FILTER:</div>
                 <div id="text">Search:</div>

@@ -6,7 +6,11 @@ package PandoAFP;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +33,7 @@ public class DocumentViewServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NumberFormatException, SQLException, NamingException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -54,7 +58,15 @@ public class DocumentViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NumberFormatException ex) {
+            Logger.getLogger(DocumentViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(DocumentViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -69,7 +81,15 @@ public class DocumentViewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NumberFormatException ex) {
+            Logger.getLogger(DocumentViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(DocumentViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -88,9 +108,26 @@ public class DocumentViewServlet extends HttpServlet {
         document.setPrevPage(currentPage - 1);
     }
 
-    private Document getDocumentFromRequest(HttpServletRequest request) throws NumberFormatException {
+    private Document getDocumentFromRequest(HttpServletRequest request) throws NumberFormatException, SQLException, NamingException {
         int documentID = Integer.parseInt(request.getParameter("document"));
-        DocumentType documentType = (DocumentType)request.getSession().getAttribute("documenttype");
+        DocumentType documentType = null;
+        try {
+            documentType = (DocumentType) request.getSession().getAttribute("documenttype");
+        } catch (Exception e) {
+            Pipeline p = (Pipeline)request.getSession().getAttribute("pipeline");
+            if (documentType == null) {            
+                int dtID = Integer.parseInt(request.getParameter("dt"));
+                documentType = p.getDocTypeByID(dtID);
+            }
+            int candidateID = Integer.parseInt(request.getParameter("candidate"));
+            Candidate candidate = p.findCandidate(candidateID);
+            documentType.initDocuments(p.getId(), candidate);
+            Document document = documentType.getDocument(documentID);
+            request.getSession().setAttribute("documenttype", documentType);
+            request.getSession().setAttribute("candidateOBJ", candidate);
+            return document;
+        }
+
         Document document = documentType.getDocument(documentID);
         return document;
     }
