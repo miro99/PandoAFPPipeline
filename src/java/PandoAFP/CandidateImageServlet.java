@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ public class CandidateImageServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {     
         response.setContentType("text/html;charset=UTF-8");        
         BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
         FileInputStream fis;
@@ -67,10 +68,15 @@ public class CandidateImageServlet extends HttpServlet {
     public File GetImageFromStore(String id) throws FileNotFoundException{
         File imgFile = null;
         if (id.equals("1")) {
-            imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\code_monkey.jpg");            
+            //imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\code_monkey.jpg");
+            String relativeWebPath = "Images\\code_monkey.jpg";
+            String absoluteDiskpath = getServletContext().getRealPath(relativeWebPath);
+            imgFile = new File(absoluteDiskpath);
         }
         else{
-            imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\Icon-user.png");
+            String relativeWebPath = "Images\\Icon-user.png";
+            String absoluteDiskpath = getServletContext().getRealPath(relativeWebPath);
+            imgFile = new File(absoluteDiskpath);
         }
         return imgFile;
     }
