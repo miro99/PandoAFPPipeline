@@ -318,3 +318,24 @@ a:link {color: black}
     font-size: x-large;
     color: blue;
 }
+
+#RankingButtons {
+    display: table;
+}
+
+#UpRank {
+    display: table-cell;      
+}
+
+#DownRank {
+    display: table-cell;    
+}
+
+#UpRankButton {
+    width: 25px;
+    margin-right: 5px;
+}
+
+#DownRankButton {
+    width: 25px;
+}
