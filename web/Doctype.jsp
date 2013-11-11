@@ -99,6 +99,15 @@
                                         ${candidateOBJ.lastName}
                                         <br/>
                                         ${candidateOBJ.title}
+                                        
+                                        <section id="RankingButtons">
+                                            <div id="UpRank">
+                                                <input id="UpRankButton" type="submit" value="+"/>
+                                            </div>
+                                            <div id="DownRank">
+                                                <input id="DownRankButton" type="submit" value="-"/>
+                                            </div>
+                                        </section>
                                 </div>
                             </div>
                         <!--</div>-->
