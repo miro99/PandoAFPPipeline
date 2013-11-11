@@ -18,8 +18,8 @@
         <section id="document">
             <section id="header">
                 <div id="headerColumn1">
-                    <!-- PandoAFP -->
-                    <img src="Images/PandoAFP - Version 2.png"/>
+                    <img src="Images/Pando AFP.png"/>
+                    <!--<img src="Images/PandoAFP - Version 2.png"/>-->
                 </div>
             
                 <div id="headerColumn2">
@@ -31,7 +31,7 @@
                 </div>
             </section>
         
-            <section id="keyword">
+            <!--<section id="keyword">
                 <div id="filtersText">FILTERS:</div>
                 <div id="text">Keyword:</div>
                 <div id="txtInput">
@@ -40,7 +40,21 @@
                 <div id="buttondiv">
                     <button id="goButton">GO</button>
                 </div>
+            </section>-->
+            <form action="Search" method="POST">
+            <section id="keyword">
+                <div id="filtersText">FILTER:</div>
+                <div id="text">Search:</div>
+                
+                    <div id="txtInput">
+                        <input id="keywordInput" type="text" name="txtkeyword" value="" />
+                    </div>
+                    <div id="buttondiv">
+                        <!--<button id="goButton">GO</button>-->
+                        <input type="submit" value="GO"/>
+                    </div>
             </section>
+        </form>          
             
             <section id="breadcrumb">                
                  <a href="index.jsp?pipeline=${pipeline.id}"> ${pipeline.name} </a> &gt;  
@@ -51,7 +65,7 @@
             <section id="dataSection">
                 <section id="dataList">
                     <section id="dataHeader">
-                        <div id="listTitle">Candidates<div>
+                        <div id="listTitle">Document<div>
                     </section>  
                            
                     <section id="listItemSection">
@@ -74,7 +88,7 @@
                     <section id="dataHeader">
                         <div id="listTitle"> 
                             <!--&lt; Description based on current selection level &gt;-->
-                            &lt; Pipeline Information &gt;
+                            Document Type
                         </div>
                     </section>  
                     <section id="mainSectionContent">
@@ -90,8 +104,9 @@
                                         Bronx NY, 10455 apt 2
                                 </div>
                             </div>-->       
-                             <div id="pipelineData">
-                                 Name: ${pipeline.name}
+                             <!--<div id="pipelineData">-->
+                             <div id="documentTypeData">
+                                 ${documenttype.name}
                              </div>
                         <!--</div>-->
                     </section>

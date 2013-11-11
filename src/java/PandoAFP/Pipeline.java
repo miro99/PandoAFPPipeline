@@ -12,28 +12,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 /**
  *
  * @author ajmiro
  */
-public class Pipeline {
+public class Pipeline extends Data {
     private String name;
-    private int id;    
+    private int id;
+    private String note;
     
-    private Candidate[] candidates; //this is for testing only will be removed
+    private Candidate[] candidates;
+    private DocumentType[] documentTypes;
   
-    public Pipeline() {
-        
+    public Pipeline() {           
     }
     
-    public Pipeline(int id) throws NamingException, SQLException {
+    public Pipeline(int id) throws NamingException, SQLException {                
         this.id = id;
         getCandidatesFromStore();
+        getDocumentTypesFromStore();
     }
     
     public void Init(int id){
@@ -106,9 +105,16 @@ public class Pipeline {
         this.id = id;
     }
     
-    public Candidate findCandidate(int id){        
-        //return new Candidate("AJ", "Miro", 1);
-        return candidates[id - 1];
+    public Candidate findCandidate(int id){                        
+        Candidate result = null;
+        for (int i = 0; i < candidates.length; i++) {
+            Candidate candidate = candidates[i];
+            if (candidate.getId() == id) {
+                result = candidate;
+                break;
+            }
+        }
+        return result;
     }
 
     private void getCandidatesFromStore() throws NamingException, SQLException {
@@ -152,20 +158,45 @@ public class Pipeline {
             }
         }
     }
-
-    private Connection createDbConnection() throws SQLException, NamingException {
-        //Open a connection to the data store
-        Context initialContext = new InitialContext();
-        Context context = (Context)initialContext.lookup("java:comp/env");
-        DataSource dataSource = (DataSource)context.lookup("jdbc/pando_afp");
-        Connection connection = (Connection)dataSource.getConnection();
-        return connection;
+    
+    private void getDocumentTypesFromStore() {
+        Connection connection = null;
+        try {            
+            connection = createDbConnection();
+            StringBuilder sbSqlStatement = new StringBuilder("SELECT * FROM document_type WHERE pipeline = ");
+            sbSqlStatement.append(this.id);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sbSqlStatement.toString());
+            
+            ArrayList<DocumentType> arrDocTypes = new ArrayList<DocumentType>();
+            while (resultSet.next()) {
+                String documentTypeName = resultSet.getString("name");
+                int documentTypeID = resultSet.getInt("id");
+                DocumentType documentType = new DocumentType(documentTypeName, documentTypeID);
+                arrDocTypes.add(documentType);
+            }
+            documentTypes = new DocumentType[0];
+            documentTypes = arrDocTypes.toArray(documentTypes);
+        } catch (SQLException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }        
     }
 
     private StringBuilder createGetCandidateSQLStatement() {
         String getCandidateSql = "SELECT * FROM CANDIDATE WHERE PIPELINE = ";
         StringBuilder sbGetCandidateSql = new StringBuilder(getCandidateSql);
         sbGetCandidateSql.append(this.id);
+        sbGetCandidateSql.append(" ORDER BY last,first");
         return sbGetCandidateSql;
     }
 
@@ -175,4 +206,65 @@ public class Pipeline {
         sbGetNameSql.append(this.id);
         return sbGetNameSql.toString();
     }
+    
+    private String createGetNoteSQLStatement() {        
+        StringBuilder sbGetNoteSQL = new StringBuilder("SELECT * FROM PIPELINE WHERE ID = ");
+        sbGetNoteSQL.append(this.id);
+        return sbGetNoteSQL.toString();
+    }
+
+    /**
+     * @return the documentTypes
+     */
+    public DocumentType[] getDocumentTypes() {
+        getDocumentTypesFromStore();
+        return documentTypes;
+    }
+    
+    public DocumentType getDocTypeByID(int id) {
+        DocumentType foundDocumentType = null;
+        for (int i = 0; i < documentTypes.length; i++) {
+            DocumentType documentType = documentTypes[i];
+            if (documentType.getId() == id) {
+                foundDocumentType = documentType;
+                break;
+            }
+        }
+        return foundDocumentType;
+    }
+
+    /**
+     * @return the note
+     */
+    public String getNote() throws SQLException, NamingException {
+        Connection connection = null;
+        ResultSet resultSet = null;
+        try {            
+            connection = createDbConnection();
+            String sqlStatement = createGetNoteSQLStatement();
+            Statement statement = connection.createStatement();
+            
+            resultSet = statement.executeQuery(sqlStatement);
+            if (resultSet.next()) {
+                return resultSet.getString("Note");
+            }
+            else {
+                return "Unnamed Pipeline";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } catch (NamingException ex) {
+            Logger.getLogger(Pipeline.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        }
+        finally {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }    
 }

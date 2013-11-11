@@ -20,8 +20,8 @@
                 
         <section id="document">
             <section id="header">
-                <div id="headerColumn1">
-                    PandoAFP
+                <div id="headerColumn1">                    
+                    <img src="Images/Pando AFP.png"/>
                 </div>
             
                 <div id="headerColumn2">
@@ -32,18 +32,21 @@
                     
                 </div>
             </section>
-        
+        <form action="Search" method="POST">
             <section id="keyword">
-                <div id="filtersText">FILTERS:</div>
-                <div id="text">Keyword:</div>
-                <div id="txtInput">
-                    <input id="keywordInput" type="text" name="txtkeyword" value="" />
-                </div>
-                <div id="buttondiv">
-                    <button id="goButton">GO</button>
-                </div>
+                <div id="filtersText">FILTER:</div>
+                <div id="text">Search:</div>
+                
+                    <div id="txtInput">
+                        <input id="keywordInput" type="text" name="txtkeyword" value="" />
+                    </div>
+                    <div id="buttondiv">
+                        <!--<button id="goButton">GO</button>-->
+                        <input type="submit" value="GO"/>
+                    </div>
+
             </section>
-            
+        </form>            
             <section id="breadcrumb">                
                 <%= pipeline.getName()%> &gt;
             </section>
@@ -51,7 +54,9 @@
             <section id="dataSection">
                 <section id="dataList">
                     <section id="dataHeader">
-                        <div id="listTitle">Candidates<div>
+                        <div id="titleborder">
+                            <div id="listTitle">Candidate<div>
+                        </div>
                     </section>  
                            
                     <section id="listItemSection">
@@ -62,7 +67,7 @@
                         <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
                             <div class="listItem">
                                <a href="DocTypeServlet?candidate=${item.id}">
-                                    ${item.firstName}, ${item.lastName}
+                                    ${item.lastName}, ${item.firstName}
                                 </a>                                     
                             </div>
                         </c:forEach>
@@ -71,9 +76,9 @@
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
-                        <div id="listTitle"> 
-                            <!--&lt; Description based on current selection level &gt;-->
-                            &lt; Pipeline Information &gt;
+                        <div id="listTitle2">                             
+                            <!-- &lt; Pipeline Information &gt; -->
+                            ${pipeline.name}
                         </div>
                     </section>  
                     <section id="mainSectionContent">
@@ -90,7 +95,7 @@
                                 </div>
                             </div>-->       
                              <div id="pipelineData">
-                                 Name: ${pipeline.name}
+                                ${pipeline.note}
                              </div>
                         <!--</div>-->
                     </section>

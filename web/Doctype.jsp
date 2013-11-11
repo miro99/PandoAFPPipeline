@@ -19,7 +19,7 @@
         <section id="document">
             <section id="header">
                 <div id="headerColumn1">
-                    PandoAFP
+                    <img src="Images/Pando AFP.png"/>
                 </div>
             
                 <div id="headerColumn2">
@@ -31,16 +31,30 @@
                 </div>
             </section>
         
-            <section id="keyword">
+        <!--    <section id="keyword">
                 <div id="filtersText">FILTERS:</div>
-                <div id="text">Keyword:</div>
+                <div id="text">Search:</div>
                 <div id="txtInput">
                     <input id="keywordInput" type="text" name="txtkeyword" value="" />
                 </div>
                 <div id="buttondiv">
                     <button id="goButton">GO</button>
                 </div>
+            </section> -->
+        <form action="Search" method="POST">
+            <section id="keyword">
+                <div id="filtersText">FILTER:</div>
+                <div id="text">Search:</div>
+                
+                    <div id="txtInput">
+                        <input id="keywordInput" type="text" name="txtkeyword" value="" />
+                    </div>
+                    <div id="buttondiv">
+                        <!--<button id="goButton">GO</button>-->
+                        <input type="submit" value="GO"/>
+                    </div>
             </section>
+        </form>          
             
             <section id="breadcrumb">
                 <!-- <a href="foo.com">PipeLineName</a> &gt; <a href="foo.com">AJ Miro</a> &gt; Resume -->
@@ -54,20 +68,20 @@
                         <div id="listTitle">Document Types<div>
                     </section>  
                            
-                    <section id="listItemSection">                     
-                       <c:forEach var="item" items="<%=doctype.getDocumentTypes()%>" varStatus="loop">
+                    <section id="listItemSection">                                             
+                        <c:forEach var="item" items="<%=pipeline.getDocumentTypes()%>" varStatus="loop">
                             <div class="listItem">
                                <a href="Documents?doctype=${item.id}">
                                     ${item.name}
                                 </a>                                     
                             </div>
-                        </c:forEach>     
+                        </c:forEach>    
                     </section>                                       
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
                         <div id="listTitle"> 
-                            &lt; Description based on current selection level &gt;
+                            Candidate
                         </div>
                     </section>  
                     <section id="mainSectionContent">

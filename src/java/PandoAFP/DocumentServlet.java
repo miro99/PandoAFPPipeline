@@ -6,6 +6,10 @@ package PandoAFP;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,14 +32,16 @@ public class DocumentServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, NamingException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
             String documentTypeID = request.getParameter("doctype");
-            Candidate obj = (Candidate)request.getSession().getAttribute("candidateOBJ");
-            DocumentType dt = new DocumentType();
-            dt.initDocuments(Integer.parseInt(documentTypeID));            
+            Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");
+            
+            Pipeline pipeline = (Pipeline)request.getSession().getAttribute("pipeline");                        
+            DocumentType dt = pipeline.getDocTypeByID(Integer.parseInt(documentTypeID));            
+            dt.initDocuments(pipeline.getId(), candidate);
             request.getSession().setAttribute("documenttype", dt);
             
             request.getRequestDispatcher("Document.jsp?").forward(request, response);
@@ -57,7 +63,13 @@ public class DocumentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(DocumentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +84,13 @@ public class DocumentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(DocumentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -4,11 +4,19 @@
  */
 package PandoAFP;
 
+import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.naming.NamingException;
+
 /**
  *
  * @author ajmiro
  */
-public class DocumentType {
+public class DocumentType extends Data{
     private String name;
     private int id;
     private Document documents[];
@@ -34,31 +42,29 @@ public class DocumentType {
     }
 
     public DocumentType() {
+        types = getDocumentTypesFromDataStore();
     }
     
      public DocumentType[] getDocumentTypes() {
-        //Get document types from data store
-        DocumentType[] docTypes = new DocumentType[3];
-        docTypes[0] = new DocumentType("Resume", 1);
-        docTypes[1] = new DocumentType("Profile", 2);
-        docTypes[2] = new DocumentType("Recommendations", 3);
-        types = docTypes;
         return types;
     }
     
-    public void initDocuments(int typeID){      
-        this.id = typeID;
-        this.name = types[typeID - 1].name;
-        //Get documents of specified type from data store.
-        Document[] documents = new Document[3];
-        documents[0] = new Document(1, "Resume 1");
-        documents[1] = new Document(2, "Resume 2");
-        documents[2] = new Document(3, "Resume 3");        
-        this.documents = documents;                
+    public void initDocuments(int pipelineID, Candidate candidate) throws SQLException, NamingException{      
+        Document[] docs = getDocumentsFromStore(pipelineID, candidate);        
+        this.documents = docs;                
     }
     
     public Document getDocument(int id) {
-        return  documents[id-1];
+        //return  documents[id-1];
+        Document foundDoc = null;
+        for (int i = 0; i < documents.length; i++) {
+            Document document = documents[i];
+            if (document.getId() == id) {
+                foundDoc = document;
+                break;
+            }
+        }
+        return foundDoc;
     }
 
     /**
@@ -66,5 +72,46 @@ public class DocumentType {
      */
     public Document[] getDocuments() {
         return documents;
+    }
+
+    private DocumentType[] getDocumentTypesFromDataStore() {        
+            //Get document types from data store
+            DocumentType[] docTypes = new DocumentType[3];
+            docTypes[0] = new DocumentType("Resume", 1);
+            docTypes[1] = new DocumentType("Profile", 2);
+            docTypes[2] = new DocumentType("Recommendations", 3);
+            return docTypes;
+    }
+
+    private Document[] getDocumentsFromStore(int pipelineID, Candidate candidate) throws SQLException, NamingException {
+        //Get documents of specified type from data store.
+//        Document[] docs = new Document[3];
+//        docs[0] = new Document(1, "Resume 1");
+//        docs[1] = new Document(2, "Resume 2");
+//        docs[2] = new Document(3, "Resume 3");
+//        return docs;
+        Connection connection = null;
+        Document[] docs;
+        try
+        {            
+            connection = createDbConnection();
+            StringBuilder sbSqlGetDocumentsForPipelineAndDocument = new StringBuilder("SELECT * FROM document WHERE pipeline = ");
+            sbSqlGetDocumentsForPipelineAndDocument.append(pipelineID).append(" AND document_type = ").append(this.id);
+            sbSqlGetDocumentsForPipelineAndDocument.append(" AND candidate = ").append(candidate.getId());
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sbSqlGetDocumentsForPipelineAndDocument.toString());            
+            docs = new Document[0];
+            ArrayList<Document> arrDocuments = new ArrayList<Document>();
+            while (resultSet.next()) {
+                Document document = new Document(resultSet.getInt("id"), resultSet.getString("name"));
+                arrDocuments.add(document);
+            }
+            docs = arrDocuments.toArray(docs);
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return docs;
     }
 }
