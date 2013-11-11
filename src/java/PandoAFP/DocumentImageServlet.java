@@ -92,11 +92,12 @@ public class DocumentImageServlet extends HttpServlet {
 
     private File getImageFromStore(int candidateID, int documentID, int page) {
         File imgFile;
-        StringBuilder sbImageFilePath = new StringBuilder("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\CandidateFiles\\");
-        sbImageFilePath.append(candidateID).append("\\");
+        String relativeWebPath = "Images\\CandidateFiles\\";
+        String absoluteDiskpath = getServletContext().getRealPath(relativeWebPath);        
+        StringBuilder sbImageFilePath = new StringBuilder(absoluteDiskpath);
+        sbImageFilePath.append("\\").append(candidateID).append("\\");
         sbImageFilePath.append(documentID).append("\\");
-        sbImageFilePath.append(page).append(".png");
-        //imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\testImage.jpg"); 
+        sbImageFilePath.append(page).append(".png");        
         imgFile = new File(sbImageFilePath.toString());
         return imgFile;
     }
