@@ -319,23 +319,11 @@ a:link {color: black}
     color: blue;
 }
 
-#RankingButtons {
+#CommentSection {
     display: table;
 }
 
-#UpRank {
-    display: table-cell;      
-}
-
-#DownRank {
-    display: table-cell;    
-}
-
-#UpRankButton {
-    width: 25px;
-    margin-right: 5px;
-}
-
-#DownRankButton {
-    width: 25px;
+#commentText {
+    height: 200px;
+    width: 600px;
 }
