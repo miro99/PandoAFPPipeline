@@ -69,7 +69,10 @@
                                <a href="DocTypeServlet?candidate=${item.id}">
                                     ${item.lastName}, ${item.firstName}
                                </a>
-                               &nbsp;<a href="ShowComment?candidate=${item.id}">(${item.commentCount})</a>
+                                    &nbsp;<a id="commentCounts" href="ShowComment?candidate=${item.id}"> 
+                                            <img id="InputMainPage" src="Images/thumb up.png">${item.positiveCommentCount}&nbsp;
+                                            <img id="InputMainPage" src="Images/thumb down.png">${item.negativeCommentCount}&nbsp;
+                                          </a>
                             </div>
                         </c:forEach>
                             
