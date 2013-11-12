@@ -69,6 +69,7 @@ public class Candidate {
             String sql = "SELECT COUNT(ID) as 'count' FROM CandidateRanking WHERE Candidate = " + this.id;
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
+            result.next();
             commentCount = result.getInt("count");
         } catch (SQLException ex) {
             Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
