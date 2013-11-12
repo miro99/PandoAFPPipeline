@@ -15,6 +15,7 @@ public class Candidate {
     private int id;
     private String title;    
     private int commentCount;
+    private Comment[] comments;
     
     /**
      * @return the firstName
@@ -58,4 +59,12 @@ public class Candidate {
         commentCount = Comment.getCommentCountForCandidate(this);
         return commentCount;
     }    
+
+    /**
+     * @return the comments
+     */
+    public Comment[] getComments() {
+        comments = Comment.getCommentsForCandidate(this);
+        return comments;
+    }
 }
