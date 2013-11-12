@@ -100,13 +100,20 @@
                                         <br/>
                                         ${candidateOBJ.title}
                                         
-                                        <section id="RankingButtons">
-                                            <div id="UpRank">
-                                                <input id="UpRankButton" type="submit" value="+"/>
-                                            </div>
-                                            <div id="DownRank">
-                                                <input id="DownRankButton" type="submit" value="-"/>
-                                            </div>
+                                        <section id="CommentSection">                                           
+                                            <br/><br/>
+                                            Comments:
+                                            <form action="Comment" method="post">
+                                                <!-- <input id="commentText" type="text"/> -->
+                                                <textarea id="commentText" name="comment">
+                                                </textarea>
+                                                <section id="GoodBad">
+                                                    <input type="radio" name="goodBad" value="good">+
+                                                    <input type="radio" name="goodBad" value="bad">-
+                                                    <input type="radio" name="goodBad" value="n/a">n/a
+                                                </section>
+                                                <input type="submit" value="Submit"/>
+                                            </form>
                                         </section>
                                 </div>
                             </div>
