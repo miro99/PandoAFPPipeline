@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
@@ -47,6 +46,7 @@ public class CommentServlet extends HttpServlet {
             Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");
             saveComment(comment,goodBadValue, candidate,connection);
             //Forward user to ShowComments page
+            request.getRequestDispatcher("ShowComments.jsp?").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(CommentServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {            
