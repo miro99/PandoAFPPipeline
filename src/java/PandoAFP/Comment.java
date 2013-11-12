@@ -123,8 +123,10 @@ public class Comment {
     /**
      * @return the user
      */
-    public int getUser() {
-        return user;
+    public User getUser() {
+        //return user;
+        User u = new User();
+        return u;
     }
 
     /**
