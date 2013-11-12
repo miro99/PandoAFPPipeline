@@ -40,6 +40,10 @@
         <servlet-name>ShowCommentServlet</servlet-name>
         <servlet-class>PandoAFP.ShowCommentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ThumbImageServlet</servlet-name>
+        <servlet-class>PandoAFP.ThumbImageServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DocTypeServlet</servlet-name>
         <url-pattern>/DocTypeServlet</url-pattern>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>ShowCommentServlet</servlet-name>
         <url-pattern>/ShowComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThumbImageServlet</servlet-name>
+        <url-pattern>/ThumbImage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout> 
