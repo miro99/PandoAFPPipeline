@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
-import org.apache.naming.java.javaURLContextFactory;
 
 /**
  *
@@ -21,7 +20,7 @@ import org.apache.naming.java.javaURLContextFactory;
  */
 public class Comment {
     
-    int id;
+    private int id;
     private int score;
     private int user;
     private int candidateID;
@@ -100,6 +99,10 @@ public class Comment {
         return comments;
     }
     
+    public static int getCommentEmotion(int commentID) {
+        return 1;
+    }
+    
     private static Connection getDBConnection() {
         Connection connection = null;
         try {
@@ -148,5 +151,12 @@ public class Comment {
      */
     public String getReview() {
         return review;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
     }
 }
