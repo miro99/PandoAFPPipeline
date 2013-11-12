@@ -15,6 +15,8 @@ public class Candidate {
     private int id;
     private String title;    
     private int commentCount;
+    private int positiveCommentCount;
+    private int negativeCommentCount;
     private Comment[] comments;
     
     /**
@@ -66,5 +68,21 @@ public class Candidate {
     public Comment[] getComments() {
         comments = Comment.getCommentsForCandidate(this);
         return comments;
+    }
+
+    /**
+     * @return the positiveCommentCount
+     */
+    public int getPositiveCommentCount() {
+        positiveCommentCount = Comment.getPositiveCommentCountForCandidate(this);
+        return positiveCommentCount;
+    }
+
+    /**
+     * @return the negativeCommentCount
+     */
+    public int getNegativeCommentCount() {
+        negativeCommentCount = Comment.getNegativeCommentCountForCandidate(this);
+        return negativeCommentCount;
     }
 }
