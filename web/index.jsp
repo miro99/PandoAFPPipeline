@@ -69,7 +69,7 @@
                                <a href="DocTypeServlet?candidate=${item.id}">
                                     ${item.lastName}, ${item.firstName}
                                </a>
-                               &nbsp;<a href="Comments?candidate=${item.id}">(${item.commentCount})</a>
+                               &nbsp;<a href="ShowComment?candidate=${item.id}">(${item.commentCount})</a>
                             </div>
                         </c:forEach>
                             
