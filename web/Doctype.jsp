@@ -108,9 +108,9 @@
                                                 <textarea id="commentText" name="comment">
                                                 </textarea>
                                                 <section id="GoodBad">
-                                                    <input type="radio" name="goodBad" value="good">+
-                                                    <input type="radio" name="goodBad" value="bad">-
-                                                    <input type="radio" name="goodBad" value="n/a">n/a
+                                                    <input type="radio" name="goodBad" value="1">+
+                                                    <input type="radio" name="goodBad" value="0">-
+                                                    <input type="radio" name="goodBad" value="-1">n/a
                                                 </section>
                                                 <input type="submit" value="Submit"/>
                                             </form>
