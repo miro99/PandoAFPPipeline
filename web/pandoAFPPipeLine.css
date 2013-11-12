@@ -97,7 +97,7 @@ html body {
 
 #dataList {
 
-    width: 30%;
+    width: 800px;
     vertical-align: top;
     display: table-cell;
     background: #F0F0F0;
@@ -179,7 +179,7 @@ img {
 }
 
 #listItemSection {
-
+    width: 225px;
     padding: 10px;
 }
 
@@ -336,14 +336,14 @@ a:link {color: black}
      margin-bottom: 10px;
 }
 
-.userAndTimeStampComment {
-    color: blue;
+.userAndTimeStampComment {    
 }
 
 .comment {
     font-style: italic;
     padding-left: 10px;
-    font-size: larger;
+    font-size: x-large;
+    color: blue;
 }
 
 .thumb {
@@ -359,4 +359,17 @@ a:link {color: black}
 #negativeInput {
     width: 40px;
     height: 40px;    
+}
+
+#InputMainPage {    
+    width: 20px;
+    height: 20px;    
+    background-color: transparent;
+}
+
+#commentCounts {
+    text-decoration: none;
+    border-bottom: black;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
 }
