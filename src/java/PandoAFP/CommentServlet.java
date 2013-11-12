@@ -46,6 +46,7 @@ public class CommentServlet extends HttpServlet {
             connection = createDBConnection();
             Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");
             saveComment(comment,goodBadValue, candidate,connection);
+            //Forward user to ShowComments page
         } catch (SQLException ex) {
             Logger.getLogger(CommentServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {            
