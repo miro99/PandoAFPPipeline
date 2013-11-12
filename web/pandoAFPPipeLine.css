@@ -327,3 +327,36 @@ a:link {color: black}
     height: 200px;
     width: 600px;
 }
+
+#mainSectionContentComments {
+    margin-top: 10px;
+}
+
+.listItemComment {          
+     margin-bottom: 10px;
+}
+
+.userAndTimeStampComment {
+    color: blue;
+}
+
+.comment {
+    font-style: italic;
+    padding-left: 10px;
+    font-size: larger;
+}
+
+.thumb {
+    width: 40px;
+    height: 40px;
+}
+
+#positiveInput {
+    width: 40px;
+    height: 40px;
+}
+
+#negativeInput {
+    width: 40px;
+    height: 40px;    
+}
