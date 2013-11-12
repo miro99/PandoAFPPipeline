@@ -61,6 +61,54 @@ public class Comment {
         }
         return commentCount;
     }
+    
+    public static int getPositiveCommentCountForCandidate(Candidate c) {
+        Connection connection = null;
+        int commentCount = -2;
+        try {            
+            connection = getDBConnection();
+            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateRanking WHERE Candidate = " + c.getId() + " AND score = 1";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            result.next();
+            commentCount = result.getInt("count");
+        } catch (SQLException ex) {
+            Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return commentCount;
+    }
+    
+    public static int getNegativeCommentCountForCandidate(Candidate c) {
+        Connection connection = null;
+        int commentCount = -2;
+        try {            
+            connection = getDBConnection();
+            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateRanking WHERE Candidate = " + c.getId() + " AND score = 0";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            result.next();
+            commentCount = result.getInt("count");
+        } catch (SQLException ex) {
+            Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Candidate.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return commentCount;
+    }
 
     public static Comment[] getCommentsForCandidate(Candidate c){
 
