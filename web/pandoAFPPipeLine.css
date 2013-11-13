@@ -378,3 +378,8 @@ a:link {color: black}
     border-bottom-style: solid;
     border-bottom-width: thin;    
 }
+
+.wordWrap {
+    word-wrap: break-word;
+    width: 100px;
+}

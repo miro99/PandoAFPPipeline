@@ -69,9 +69,11 @@
                                 <tr>
                                     <div class="listItem">
                                        <td>
-                                           <a class="candidateItem" href="DocTypeServlet?candidate=${item.id}">
-                                                ${item.lastName}, ${item.firstName}
-                                           </a>
+                                           <div class="wordWrap">
+                                               <a class="candidateItem" href="DocTypeServlet?candidate=${item.id}">
+                                                    ${item.lastName}, ${item.firstName}
+                                               </a>
+                                           </div>
                                         </td>
                                         <td class="posNegCount">
                                             &nbsp;&nbsp;<a class="commentCounts" href="ShowComment?candidate=${item.id}"> 
