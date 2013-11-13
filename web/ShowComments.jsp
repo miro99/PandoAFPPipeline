@@ -55,9 +55,8 @@
             <section id="dataSectionComments">                     
                 <section id="mainSectionComments">
                     <section id="dataHeader">
-                        <div id="listTitle">                             
-                            <!-- &lt; Pipeline Information &gt; -->
-                            ${candidateOBJ.lastName} , ${candidateOBJ.firstName}
+                        <div id="listTitle">                                                         
+                            ${candidateOBJ.lastName} , ${candidateOBJ.firstName} - User Comments
                         </div>
                     </section>  
                     <section id="mainSectionContentComments">                       
@@ -69,11 +68,11 @@
                                 </div>
                                 <div class="userAndTimeStampComment">                                                                        
                                     ${item.timeStamp} &nbsp;
-                                    ${item.user.lastName} , ${item.user.firstName} <br/>
-                                </div>
-                                <div class="comment">
-                                    ${item.review}
-                                </div>
+                                    (${item.user.lastName} , ${item.user.firstName}) <br/>
+                                </div>                                
+                            </div>
+                            <div class="comment">
+                                ${item.review}
                             </div>
                         </c:forEach>
                         </div>
