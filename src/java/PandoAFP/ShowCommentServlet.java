@@ -31,18 +31,7 @@ public class ShowCommentServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ShowCommentServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet ShowCommentServlet at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-            
+        try {            
             Pipeline pipeline = (Pipeline)request.getSession().getAttribute("pipeline");
             Candidate candidate = pipeline.findCandidate(Integer.parseInt(request.getParameter("candidate")));
             request.getSession().setAttribute("candidateOBJ", candidate);
