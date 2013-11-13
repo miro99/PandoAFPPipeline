@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,10 +25,10 @@ public class Comment {
     private int score;
     private int user;
     private int candidateID;
-    private Date timeStamp;
+    private Timestamp timeStamp;
     private String review;
 
-    public Comment(int id, int score, int user, int candidateID, Date timeStamp, String review) {
+    public Comment(int id, int score, int user, int candidateID, Timestamp timeStamp, String review) {
         this.id = id;
         this.score = score;
         this.user = user;
@@ -126,7 +127,7 @@ public class Comment {
                 int score = rs.getInt("Score");
                 int user = rs.getInt("User");
                 int candidateID = rs.getInt("Candidate");
-                Date timeStamp = rs.getDate("TimeStamp");
+                Timestamp timeStamp = rs.getTimestamp("TimeStamp");
                 String review = rs.getString("review");
                 arrComments.add(new Comment(id, score, user, candidateID, timeStamp, review));
             }
@@ -190,7 +191,7 @@ public class Comment {
     /**
      * @return the timeStamp
      */
-    public Date getTimeStamp() {
+    public Timestamp getTimeStamp() {
         return timeStamp;
     }
 
