@@ -4,7 +4,6 @@
  */
 package PandoAFP;
 
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
