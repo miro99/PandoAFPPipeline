@@ -64,17 +64,25 @@
                         <div class="listItem"><a href="foo.com">Dub, Adam</a></div>
                         <div class="listItem"><a href="foo.com">Dub, Eitan</a></div> -->
                             
-                        <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
-                            <div class="listItem">
-                               <a href="DocTypeServlet?candidate=${item.id}">
-                                    ${item.lastName}, ${item.firstName}
-                               </a>
-                                    &nbsp;<a id="commentCounts" href="ShowComment?candidate=${item.id}"> 
-                                            <img id="InputMainPage" src="Images/thumb up.png">${item.positiveCommentCount}&nbsp;
-                                            <img id="InputMainPage" src="Images/thumb down.png">${item.negativeCommentCount}&nbsp;
-                                          </a>
-                            </div>
-                        </c:forEach>
+                        <Table>
+                            <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
+                                <tr>
+                                    <div class="listItem">
+                                       <td>
+                                           <a class="candidateItem" href="DocTypeServlet?candidate=${item.id}">
+                                                ${item.lastName}, ${item.firstName}
+                                           </a>
+                                        </td>
+                                        <td class="posNegCount">
+                                            <a class="commentCounts" href="ShowComment?candidate=${item.id}"> 
+                                                <img id="InputMainPage" src="Images/thumb up.png">${item.positiveCommentCount}&nbsp;
+                                                <img id="InputMainPage" src="Images/thumb down.png">${item.negativeCommentCount}&nbsp;
+                                            </a>
+                                        </td>                                        
+                                    </div>
+                                </tr>
+                            </c:forEach>
+                        </table>
                             
                     </section>                                       
                 </section>          

@@ -299,6 +299,11 @@ background-image: linear-gradient(to bottom, #80DB39 0%, #FFFFFF 100%);
     color: black;     
     font-weight: bold;
 }
+
+.posNegCount {
+    text-align: right;    
+}
+
 a:link {color: black}
 
 #resultDocumentType {
@@ -367,9 +372,9 @@ a:link {color: black}
     background-color: transparent;
 }
 
-#commentCounts {
+.commentCounts {
     text-decoration: none;
     border-bottom: black;
     border-bottom-style: solid;
-    border-bottom-width: thin;
+    border-bottom-width: thin;    
 }
