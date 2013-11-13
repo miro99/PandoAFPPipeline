@@ -348,9 +348,12 @@ a:link {color: black}
 
 .listItemComment {          
      margin-bottom: 10px;
+     display: table;
 }
 
-.userAndTimeStampComment {    
+.userAndTimeStampComment { 
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .comment {
@@ -358,11 +361,13 @@ a:link {color: black}
     padding-left: 10px;
     font-size: x-large;
     color: blue;
+    margin-bottom: 10px;
 }
 
 .thumb {
     width: 40px;
     height: 40px;
+    display: table-cell;
 }
 
 #positiveInput {
