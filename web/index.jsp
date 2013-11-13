@@ -74,7 +74,7 @@
                                            </a>
                                         </td>
                                         <td class="posNegCount">
-                                            <a class="commentCounts" href="ShowComment?candidate=${item.id}"> 
+                                            &nbsp;&nbsp;<a class="commentCounts" href="ShowComment?candidate=${item.id}"> 
                                                 <img id="InputMainPage" src="Images/thumb up.png">${item.positiveCommentCount}&nbsp;
                                                 <img id="InputMainPage" src="Images/thumb down.png">${item.negativeCommentCount}&nbsp;
                                             </a>
