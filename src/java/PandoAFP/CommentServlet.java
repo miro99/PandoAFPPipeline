@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,8 +46,10 @@ public class CommentServlet extends HttpServlet {
             connection = createDBConnection();
             Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");
             saveComment(comment,goodBadValue, candidate,connection);
-            //Forward user to ShowComments page
-            request.getRequestDispatcher("ShowComments.jsp?").forward(request, response);
+            
+            //Redirect instead of forward to avoid duplication of data on page refresh.
+            String urlWithSessionID = response.encodeRedirectURL("ShowComments.jsp?");
+            response.sendRedirect(urlWithSessionID);                        
         } catch (SQLException ex) {
             Logger.getLogger(CommentServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {            
