@@ -40,16 +40,13 @@ public class CommentServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         Connection connection = null;
         try {
-            /* TODO output your page here. You may use following sample code. */
-            String comment = (String)request.getParameter("comment");
-            String goodBadValue = (String)request.getParameter("goodBad");            
+
+            String comment = getComment(request);
+            String score = getScore(request);            
             connection = createDBConnection();
-            Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");
-            saveComment(comment,goodBadValue, candidate,connection);
-            
-            //Redirect instead of forward to avoid duplication of data on page refresh.
-            String urlWithSessionID = response.encodeRedirectURL("ShowComments.jsp?");
-            response.sendRedirect(urlWithSessionID);                        
+            Candidate candidate = getCandidate(request);
+            saveComment(comment,score, candidate,connection);
+            redirectUser(response);
         } catch (SQLException ex) {
             Logger.getLogger(CommentServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {            
@@ -120,15 +117,37 @@ public class CommentServlet extends HttpServlet {
             return connection;
     }      
     
-    private void saveComment(String comment, String goodBadValue, Candidate candidate, Connection connection) throws SQLException {
+    private void saveComment(String comment, String score, Candidate candidate, Connection connection) throws SQLException {
         //Write comment and ranking to UserRankingCandidate table
         //We are going to make the User ID static for now
         //This will be made dynamic when login feature is implemented.
         StringBuilder insertStatement = new StringBuilder("INSERT INTO CandidateRanking (Review, Score, Candidate, TimeStamp) VALUES(");
         insertStatement.append("'").append(comment.trim()).append("'").append(",")
-                .append(goodBadValue).append(",");
+                .append(score).append(",");
         insertStatement.append(candidate.getId()).append(",").append("now()").append(")");
         PreparedStatement statement = connection.prepareStatement(insertStatement.toString());
         boolean execute = statement.execute();
+    }
+
+    private String getComment(HttpServletRequest request) {
+        /* TODO output your page here. You may use following sample code. */
+        String comment = (String)request.getParameter("comment");
+        return comment;
+    }
+
+    private String getScore(HttpServletRequest request) {
+        String goodBadValue = (String)request.getParameter("goodBad");
+        return goodBadValue;
+    }
+
+    private Candidate getCandidate(HttpServletRequest request) {
+        Candidate candidate = (Candidate)request.getSession().getAttribute("candidateOBJ");
+        return candidate;
+    }
+
+    private void redirectUser(HttpServletResponse response) throws IOException {
+        //Redirect instead of forward to avoid duplication of data on page refresh.
+        String urlWithSessionID = response.encodeRedirectURL("ShowComments.jsp?");
+        response.sendRedirect(urlWithSessionID);
     }
 }
