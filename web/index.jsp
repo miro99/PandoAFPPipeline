@@ -59,12 +59,12 @@
                         </div>
                     </section>  
                            
-                    <section id="listItemSection">
+                    <section id="listItemSectionCandidateList">
                         <!-- <div class="listItem"><a href="foo.com"> Miro, AJ </a></div>
                         <div class="listItem"><a href="foo.com">Dub, Adam</a></div>
                         <div class="listItem"><a href="foo.com">Dub, Eitan</a></div> -->
                             
-                        <Table>
+                        <Table id="tbl">
                             <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
                                 <tr>
                                     <div class="listItem">
@@ -75,12 +75,14 @@
                                                </a>
                                            </div>
                                         </td>
-                                        <td class="posNegCount">
-                                            &nbsp;&nbsp;<a class="commentCounts" href="ShowComment?candidate=${item.id}"> 
-                                                <img id="InputMainPage" src="Images/thumb up.png">${item.positiveCommentCount}&nbsp;
-                                                <img id="InputMainPage" src="Images/thumb down.png">${item.negativeCommentCount}&nbsp;
-                                            </a>
-                                        </td>                                        
+                                        <div class="posNegCount">
+                                            <td class="posNegCount">
+                                                &nbsp;&nbsp;<a class="commentCounts" href="ShowComment?candidate=${item.id}"> 
+                                                    <img id="InputMainPage" src="Images/thumb up.png">${item.positiveCommentCount}&nbsp;
+                                                    <img id="InputMainPage" src="Images/thumb down.png">${item.negativeCommentCount}&nbsp;
+                                                </a>
+                                            </td>
+                                        </div>
                                     </div>
                                 </tr>
                             </c:forEach>
@@ -108,9 +110,9 @@
                                         Bronx NY, 10455 apt 2
                                 </div>
                             </div>-->       
-                             <div id="pipelineData">
-                                ${pipeline.note}
-                             </div>
+                         <div id="pipelineData">
+                            ${pipeline.note}
+                         </div>
                         <!--</div>-->
                     </section>
                  </section>
