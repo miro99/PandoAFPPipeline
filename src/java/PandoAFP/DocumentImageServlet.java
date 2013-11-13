@@ -34,9 +34,11 @@ public class DocumentImageServlet extends HttpServlet {
             throws ServletException, IOException {          
         BufferedOutputStream outputStream = new BufferedOutputStream(response.getOutputStream());
         BufferedInputStream bis = null;
-        try {
-            File image = loadImage(request);
-            FileInputStream is = new FileInputStream(image);
+        File image;
+        FileInputStream is = null;
+        try {            
+            image = loadImage(request);            
+            is = new FileInputStream(image);
             bis = new BufferedInputStream(is);
             
             initializeResponse(response, image);
@@ -45,6 +47,9 @@ public class DocumentImageServlet extends HttpServlet {
             outputStream.close();
             if (bis != null) {
                 bis.close();
+            }
+            if (is != null){
+                is.close();
             }
         }
     }
