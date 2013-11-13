@@ -32,8 +32,7 @@ public class CandidateImageServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {     
-        response.setContentType("text/html;charset=UTF-8");        
+            throws ServletException, IOException {             
         BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
         FileInputStream fis;
         BufferedInputStream bis = null;
@@ -43,15 +42,7 @@ public class CandidateImageServlet extends HttpServlet {
             File imgFile = GetImageFromStore(candidateID);
             fis = new FileInputStream(imgFile);
             bis = new BufferedInputStream(fis);
-
-            response.setContentType("image/jpg");
-            response.setContentLength((int) imgFile.length());
-            response.setHeader("Content-Disposition", "inline;filename=\"" + imgFile.getName() + "\"");
-
-            byte[] buffer = new byte[1024];
-            for (int length; (length = bis.read(buffer)) > -1;) {
-                bos.write(buffer, 0, length);
-            }                            
+            respond(response, imgFile, bis, bos);
         }
         finally {                        
             bos.close();
@@ -63,8 +54,7 @@ public class CandidateImageServlet extends HttpServlet {
     
     public File GetImageFromStore(String id) throws FileNotFoundException{
         File imgFile = null;
-        if (id.equals("1")) {
-            //imgFile = new File("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\code_monkey.jpg");
+        if (id.equals("1")) {            
             String relativeWebPath = "Images\\code_monkey.jpg";
             String absoluteDiskpath = getServletContext().getRealPath(relativeWebPath);
             imgFile = new File(absoluteDiskpath);
@@ -117,4 +107,15 @@ public class CandidateImageServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void respond(HttpServletResponse response, File imgFile, BufferedInputStream bis, BufferedOutputStream bos) throws IOException {
+        response.setContentType("image/jpg");
+        response.setContentLength((int) imgFile.length());
+        response.setHeader("Content-Disposition", "inline;filename=\"" + imgFile.getName() + "\"");
+
+        byte[] buffer = new byte[1024];
+        for (int length; (length = bis.read(buffer)) > -1;) {
+            bos.write(buffer, 0, length);
+        }
+    }
 }
