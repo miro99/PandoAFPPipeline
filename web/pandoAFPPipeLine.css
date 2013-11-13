@@ -95,6 +95,10 @@ html body {
     margin-top: 10px;    
 }
 
+#dataSectionComments {    
+    margin-top:  10px;
+}
+
 #dataList {
 
     width: 800px;
@@ -104,7 +108,7 @@ html body {
 }
 
 #mainSection {    
-    margin-left: 10px;
+    margin-left: 10px;    
 }
 
 img {
@@ -179,7 +183,12 @@ img {
 }
 
 #listItemSection {
-    width: 225px;
+    width: 200px;
+    padding: 10px;
+}
+
+#listItemSectionCandidateList {
+    width: 300px;
     padding: 10px;
 }
 
@@ -189,7 +198,7 @@ img {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    width: 800px;   
+    width: 650px;   
 }
 
 #candidateDetails {
@@ -301,7 +310,7 @@ background-image: linear-gradient(to bottom, #80DB39 0%, #FFFFFF 100%);
 }
 
 .posNegCount {
-    text-align: right;    
+    text-align: right;
 }
 
 a:link {color: black}
@@ -330,7 +339,7 @@ a:link {color: black}
 
 #commentText {
     height: 200px;
-    width: 600px;
+    width: 440px;
 }
 
 #mainSectionContentComments {
@@ -381,5 +390,9 @@ a:link {color: black}
 
 .wordWrap {
     word-wrap: break-word;
-    width: 100px;
+    width: 200px;
+}
+
+#tbl {
+    width: 350px;
 }
