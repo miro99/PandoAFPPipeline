@@ -43,7 +43,7 @@ public class Comment {
         int commentCount = -2;
         try {            
             connection = getDBConnection();
-            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateRanking WHERE Candidate = " + c.getId();
+            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateComment WHERE Candidate = " + c.getId();
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             result.next();
@@ -67,7 +67,7 @@ public class Comment {
         int commentCount = -2;
         try {            
             connection = getDBConnection();
-            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateRanking WHERE Candidate = " + c.getId() + " AND score = 1";
+            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateComment WHERE Candidate = " + c.getId() + " AND score = 1";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             result.next();
@@ -91,7 +91,7 @@ public class Comment {
         int commentCount = -2;
         try {            
             connection = getDBConnection();
-            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateRanking WHERE Candidate = " + c.getId() + " AND score = 0";
+            String sql = "SELECT COUNT(ID) as 'count' FROM CandidateComment WHERE Candidate = " + c.getId() + " AND score = 0";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             result.next();
@@ -112,7 +112,7 @@ public class Comment {
 
     public static Comment[] getCommentsForCandidate(Candidate c){
 
-        String sql = "SELECT * FROM CandidateRanking WHERE Candidate = " + c.getId() + " ORDER BY TimeStamp desc";
+        String sql = "SELECT * FROM CandidateComment WHERE Candidate = " + c.getId() + " ORDER BY TimeStamp desc";
         Connection connection = null;
         Comment[] comments = new Comment[0];
         ArrayList<Comment> arrComments = null;
