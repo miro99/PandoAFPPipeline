@@ -135,7 +135,11 @@ public class Pipeline extends Data {
             //Get all of the candidates for this pipeline
             ArrayList<Candidate> arrCandidates = new ArrayList<Candidate>();
             while (resultSet.next()) {
-                Candidate candidate = new Candidate(resultSet.getString("First"), resultSet.getString("Last"), resultSet.getString("Title"), resultSet.getInt("ID"));
+                Candidate candidate = new Candidate(resultSet.getString("First"), 
+                        resultSet.getString("Last"), 
+                        resultSet.getString("Title"), 
+                        resultSet.getInt("Rank"),
+                        resultSet.getInt("ID"));
                 arrCandidates.add(candidate);
             }
             if (arrCandidates.isEmpty() == false) {
