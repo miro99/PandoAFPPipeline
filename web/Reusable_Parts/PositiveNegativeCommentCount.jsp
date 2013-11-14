@@ -12,13 +12,15 @@
         <title></title>
     </head>
     <body>
-        <div class="posNegCount">
+        <!-- <div> -->
             <td class="posNegCount">
-                <a class="commentCounts" href="ShowComment?candidate=${param.candidateID}"> 
-                    <img id="InputMainPage" src="Images/thumb up.png">${param.positiveCount}&nbsp;
-                    <img id="InputMainPage" src="Images/thumb down.png">${param.negativeCount}&nbsp;
+                <a class="commentCounts" href="ShowComment?candidate=${param.candidateID}">
+                    <img class="InputMainPage" src="Images/thumb%20up.png">
+                    ${param.positiveCount}&nbsp;
+                    <img class="InputMainPage" src="Images/thumb%20down.png">
+                    ${param.negativeCount}&nbsp;
                 </a>
             </td>
-        </div>
+        <!-- </div> -->
     </body>
 </html>
