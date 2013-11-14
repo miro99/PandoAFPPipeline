@@ -20,20 +20,10 @@
         <jsp:useBean id="results" class="PandoAFP.Results" scope="session"/> 
         <jsp:setProperty name="pipeline" property="id" value="1"/>
                 
-        <section id="document">
-            <section id="header">
-                <div id="headerColumn1">
-                    <img src="Images/Pando AFP.png"/>
-                </div>
-            
-                <div id="headerColumn2">
-                    Document Viewer
-                </div>
-                
-                <div id="rightSideHeader">
-                    
-                </div>
-            </section>
+        <section id="document">           
+             <jsp:include page="Reusable_Parts/SiteHeader.jsp">
+                <jsp:param name="pageTitle" value="Search Results"/>
+            </jsp:include>
         
            <jsp:include page="Reusable_Parts/SearchBar.html"/>
             

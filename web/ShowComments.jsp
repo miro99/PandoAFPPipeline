@@ -18,20 +18,10 @@
         <%@taglib prefix="pandoAFP" uri="/WEB-INF/tlds/pandoAFP_tag_library.tld" %>        
         <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>
                 
-        <section id="document">
-            <section id="header">
-                <div id="headerColumn1">                    
-                    <img src="Images/Pando AFP.png"/>
-                </div>
-            
-                <div id="headerColumn2">
-                    Comments
-                </div>
-                
-                <div id="rightSideHeader">
-                    
-                </div>
-            </section>
+        <section id="document">           
+             <jsp:include page="Reusable_Parts/SiteHeader.jsp">
+                <jsp:param name="pageTitle" value="Comments" />
+            </jsp:include>
             
             <jsp:include page="Reusable_Parts/SearchBar.html"/>
             

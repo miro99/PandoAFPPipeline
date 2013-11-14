@@ -17,19 +17,9 @@
         <jsp:useBean id="pipeline" class="PandoAFP.Pipeline" scope="session"/>
         <jsp:useBean id="doctype" class="PandoAFP.DocumentType" scope="session"/>
         <section id="document">
-            <section id="header">
-                <div id="headerColumn1">
-                    <img src="Images/Pando AFP.png"/>
-                </div>
-            
-                <div id="headerColumn2">
-                    Document Viewer
-                </div>
-                
-                <div id="rightSideHeader">
-                    
-                </div>
-            </section>
+             <jsp:include page="Reusable_Parts/SiteHeader.jsp">
+                <jsp:param name="pageTitle" value="Document Viewer" />
+            </jsp:include>
         
             <jsp:include page="Reusable_Parts/SearchBar.html"/>       
             

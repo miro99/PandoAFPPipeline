@@ -16,20 +16,9 @@
     </head>
     <body>                                  
         <section id="document">
-            <section id="header">
-                <div id="headerColumn1">
-                    <img src="Images/Pando AFP.png"/>
-                    <!--<img src="Images/PandoAFP - Version 2.png"/>-->
-                </div>
-            
-                <div id="headerColumn2">
-                    Document Viewer
-                </div>
-                
-                <div id="rightSideHeader">
-                    
-                </div>
-            </section>
+             <jsp:include page="Reusable_Parts/SiteHeader.jsp">
+                <jsp:param name="pageTitle" value="Document Viewer" />
+            </jsp:include>
         
             <jsp:include page="Reusable_Parts/SearchBar.html"/>
             
