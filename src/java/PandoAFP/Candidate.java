@@ -18,6 +18,7 @@ public class Candidate {
     private int positiveCommentCount;
     private int negativeCommentCount;
     private Comment[] comments;
+    private int rank;
     
     /**
      * @return the firstName
@@ -40,11 +41,12 @@ public class Candidate {
         return id;
     }
 
-    public Candidate(String firstName, String lastName, String address, int id) {
+    public Candidate(String firstName, String lastName, String address, int rank, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = address;
         this.id = id;
+        this.rank = rank;
     }  
 
     /**
@@ -84,5 +86,12 @@ public class Candidate {
     public int getNegativeCommentCount() {
         negativeCommentCount = Comment.getNegativeCommentCountForCandidate(this);
         return negativeCommentCount;
+    }
+
+    /**
+     * @return the rank
+     */
+    public int getRank() {
+        return rank;
     }
 }
