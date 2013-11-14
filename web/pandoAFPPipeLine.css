@@ -375,7 +375,12 @@ background-image: linear-gradient(to bottom, #80DB39 0%, #FFFFFF 100%);
 
 .posNegCount {
     text-align: right;
+    font-size: smaller;  
+/*    border-bottom: black;
+    border-bottom-style: solid;
+    border-bottom-width: thin;*/
 }
+
 
 a:link {color: black}
 
@@ -445,17 +450,18 @@ a:link {color: black}
     height: 40px;    
 }
 
-#InputMainPage {    
+.InputMainPage {    
     width: 20px;
     height: 20px;    
     background-color: transparent;
+    vertical-align: middle;
 }
 
 .commentCounts {
-    text-decoration: none;
-    border-bottom: black;
+    text-decoration: none;    
+/*    border-bottom: black;
     border-bottom-style: solid;
-    border-bottom-width: thin;    
+    border-bottom-width: thin;    */
 }
 
 .wordWrap {
@@ -480,4 +486,12 @@ a:link {color: black}
     font-size: x-large;
     color: blue;
     margin-bottom: 5px;
+}
+
+#rankNumber{
+    text-align: center;
+}
+
+.tableHeader {
+    font-weight: normal;    
 }
