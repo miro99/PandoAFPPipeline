@@ -467,7 +467,7 @@ a:link {color: black}
 
 .wordWrap {
     word-wrap: break-word;
-    width: 200px;
+    width: 150px;
 }
 
 #tbl {
@@ -495,4 +495,16 @@ a:link {color: black}
 
 .tableHeader {
     font-weight: normal;    
+}
+
+#ETSFilter {
+    display: table;
+}
+
+#ETSFilterText{
+    display: table-cell;
+}
+
+#ETSFilterSelect{
+    display: table-cell;
 }
