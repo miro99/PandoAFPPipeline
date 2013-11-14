@@ -31,30 +31,7 @@
                 </div>
             </section>
         
-        <!--    <section id="keyword">
-                <div id="filtersText">FILTERS:</div>
-                <div id="text">Search:</div>
-                <div id="txtInput">
-                    <input id="keywordInput" type="text" name="txtkeyword" value="" />
-                </div>
-                <div id="buttondiv">
-                    <button id="goButton">GO</button>
-                </div>
-            </section> -->
-        <form action="Search" method="POST">
-            <section id="keyword">
-                <div id="filtersText">FILTER:</div>
-                <div id="text">Search:</div>
-                
-                    <div id="txtInput">
-                        <input id="keywordInput" type="text" name="txtkeyword" value="" />
-                    </div>
-                    <div id="buttondiv">
-                        <!--<button id="goButton">GO</button>-->
-                        <input type="submit" value="GO"/>
-                    </div>
-            </section>
-        </form>          
+            <jsp:include page="Reusable_Parts/SearchBar.html"/>       
             
             <section id="breadcrumb">
                 <!-- <a href="foo.com">PipeLineName</a> &gt; <a href="foo.com">AJ Miro</a> &gt; Resume -->
