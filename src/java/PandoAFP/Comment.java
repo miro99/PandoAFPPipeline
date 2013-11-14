@@ -113,7 +113,7 @@ public class Comment {
 
     public static Comment[] getCommentsForCandidate(Candidate c){
 
-        String sql = "SELECT * FROM CandidateRanking WHERE Candidate = " + c.getId();
+        String sql = "SELECT * FROM CandidateRanking WHERE Candidate = " + c.getId() + " ORDER BY TimeStamp desc";
         Connection connection = null;
         Comment[] comments = new Comment[0];
         ArrayList<Comment> arrComments = null;
