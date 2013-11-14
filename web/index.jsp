@@ -46,6 +46,7 @@
                                 <div id="ETSFilterText"> ETS</div>
                                 <div id="ETSFilterSelect">
                                     <select>
+                                        <option value="All">All</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
