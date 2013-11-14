@@ -71,7 +71,7 @@
                     <section id="dataHeader">
                         <div id="listTitle"> 
                             <!--&lt; Description based on current selection level &gt;-->
-                            Document
+                            <span id="backgroundHighlight">Document</span>
                         </div>
                     </section>                                
                     <section id="mainSectionContentImageOnlyTop">                            

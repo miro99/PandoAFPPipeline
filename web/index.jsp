@@ -55,7 +55,7 @@
                 <section id="dataList">
                     <section id="dataHeader">
                         <div id="titleborder">
-                            <div id="listTitle">Candidate<div>
+                            <div id="listTitle"><span id="backgroundHighlight">Candidate</span><div>
                         </div>
                     </section>  
                            
@@ -94,7 +94,7 @@
                     <section id="dataHeader">
                         <div id="listTitle2">                             
                             <!-- &lt; Pipeline Information &gt; -->
-                            Pipeline Description
+                            <span id="backgroundHighlight">Pipeline Description</span>
                         </div>
                     </section>  
                     <section id="mainSectionContent">

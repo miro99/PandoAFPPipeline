@@ -65,7 +65,7 @@
             <section id="dataSection">
                 <section id="dataList">
                     <section id="dataHeader">
-                        <div id="listTitle">Document<div>
+                        <div id="listTitle"> <span id="backgroundHighlight">Document</span><div>
                     </section>  
                            
                     <section id="listItemSection">
@@ -88,7 +88,7 @@
                     <section id="dataHeader">
                         <div id="listTitleDocument"> 
                             <!--&lt; Description based on current selection level &gt;-->
-                            Document Type
+                            <span id="backgroundHighlight">Document Type</span>
                         </div>
                     </section>  
                     <section id="mainSectionContent">

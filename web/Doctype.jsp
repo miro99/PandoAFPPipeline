@@ -65,7 +65,7 @@
             <section id="dataSection">
                 <section id="dataList">
                     <section id="dataHeader">
-                        <div id="listTitleDT">Document Types<div>
+                        <div id="listTitleDT"><span id="backgroundHighlight">Document Types</span><div>
                     </section>  
                            
                     <section id="listItemSection">                                             
@@ -81,7 +81,7 @@
                 <section id="mainSection">
                     <section id="dataHeader">
                         <div id="listTitleDTCandidate"> 
-                            Candidate
+                            <span id="backgroundHighlight">Candidate</span>
                         </div>
                     </section>  
                     <section id="mainSectionContent">

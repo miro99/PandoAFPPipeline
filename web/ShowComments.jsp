@@ -54,10 +54,12 @@
             
             <section id="dataSectionComments">                     
                 <section id="mainSectionComments">
-                    <section id="dataHeader">
-                        <div id="listTitle">                                                         
-                            ${candidateOBJ.lastName} , ${candidateOBJ.firstName} - User Comments
-                        </div>
+                    <section id="dataHeader">                        
+                        <div id="listTitleComments">   
+                            <span id="backgroundHighlight">
+                                ${candidateOBJ.lastName} , ${candidateOBJ.firstName} - User Comments
+                            </span>
+                        </div>                        
                     </section>  
                     <section id="mainSectionContentComments">                       
                         <div id="commentsSection">

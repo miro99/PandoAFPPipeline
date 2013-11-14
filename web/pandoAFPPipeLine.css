@@ -123,42 +123,67 @@ img {
 #listTitle {   
     margin-right: auto;
     margin-left: auto;
-    background: white;
+    text-align: center;
+/*    background: white;
     width: 90px;
-    color: black;
+    color: black;*/
+}
+
+#listTitleComments {   
+    margin-right: auto;
+    margin-left: auto;
+/*    background: white;
+    width: 285px;
+    color: black;*/
+}
+
+#backgroundHighlight {
+    background-color: white;
+/*    padding: 10px;*/
+    border: black;
+    border-color: white;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 10px;
+    padding-left: 9px;
+    padding-right: 9px;
 }
 
 #listTitleDocument {   
     margin-right: auto;
     margin-left: auto;
-    background: white;
+    text-align: center;
+/*    background: white;
     width: 125px;
-    color: black;
+    color: black;*/
 }
 
 #listTitleDT {   
     margin-right: auto;
     margin-left: auto;
-    background: white;
+    text-align: center;
+/*    background: white;
     width: 135px;
-    color: black;
+    color: black;*/
 }
 
 #listTitleDTCandidate {   
     margin-right: auto;
     margin-left: auto;
-    background: white;
+    text-align: center;
+/*    background: white;
     width: 90px;
-    color: black;
+    color: black;*/
 }
 
 #listTitle2 {    
     
     margin-right: auto;
     margin-left: auto;
-    background: white;
+    text-align: center;
+/*    background: white;
     width: 160px;
-    color: black;
+    color: black;*/
 }
 
 #titleborder {      
@@ -208,7 +233,7 @@ img {
 
     background: lightgray;
     color: #888888;
-    text-align: center;
+/*    text-align: center;*/
     font-family: arial;   
 }
 
