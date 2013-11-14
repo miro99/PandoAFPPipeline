@@ -69,7 +69,7 @@
                     <section id="dataHeader">
                         <div id="listTitle"> 
                             <!--&lt; Description based on current selection level &gt;-->
-                            Search Results
+                            <span id="backgroundHighlight">Search Results</span>
                         </div>
                     </section>                                
                     
