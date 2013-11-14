@@ -74,24 +74,11 @@
                         <span id="backgroundHighlight">Pipeline Description</span>
                     </div>
                 </section>  
-                <section id="mainSectionContent">
-                    <!--<div>-->
-                    <!-- <img src='Images/testImage.jpg'/> -->
-                         <!--<div id="candidateDetails">
-                            <div id="imageBorder">                                    
-                                <img id="candidateImage" src="CandidateImage/?candidate=100"/>
-                            </div>
-                            <div id="candidateData">
-                                    AJ Miro<br/>
-                                    1013 East 156 St<br/>
-                                    Bronx NY, 10455 apt 2
-                            </div>
-                        </div>-->       
-                         <div id="pipelinename">${pipeline.name}</div>
+                <section id="mainSectionContent">                     
+                     <div id="pipelinename">${pipeline.name}</div>
                      <div id="pipelineData">
                         ${pipeline.note}
-                     </div>
-                    <!--</div>-->
+                     </div>                    
                 </section>
              </section>
         </section>

@@ -291,6 +291,8 @@ img {
 
     display: table-cell;
     font-size: x-large;
+    padding: 5px;    
+    text-align: left;
     
 background-image: -webkit-gradient(
 	linear,
@@ -476,4 +478,5 @@ a:link {color: black}
     text-align: left;
     font-size: x-large;
     color: blue;
+    margin-bottom: 5px;
 }
