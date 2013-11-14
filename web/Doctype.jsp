@@ -65,7 +65,7 @@
             <section id="dataSection">
                 <section id="dataList">
                     <section id="dataHeader">
-                        <div id="listTitle">Document Types<div>
+                        <div id="listTitleDT">Document Types<div>
                     </section>  
                            
                     <section id="listItemSection">                                             
@@ -80,7 +80,7 @@
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
-                        <div id="listTitle"> 
+                        <div id="listTitleDTCandidate"> 
                             Candidate
                         </div>
                     </section>  
@@ -98,25 +98,25 @@
                                         ${candidateOBJ.firstName}, 
                                         ${candidateOBJ.lastName}
                                         <br/>
-                                        ${candidateOBJ.title}
-                                        
-                                        <section id="CommentSection">                                           
-                                            <br/><br/>
-                                            Comments:
-                                            <form action="Comment" method="post">
-                                                <!-- <input id="commentText" type="text"/> -->
-                                                <textarea id="commentText" name="comment">
-                                                </textarea>
-                                                <section id="GoodBad">
-                                                    <input type="radio" name="goodBad" value="1"><img id="positiveInput" src="Images/thumb up.png"/>
-                                                    <input type="radio" name="goodBad" value="0"><img id="negativeInput" src="Images/thumb down.png"/>
-                                                    <!-- <input type="radio" name="goodBad" value="-1">n/a -->
-                                                </section>
-                                                <input type="submit" value="Submit"/>
-                                            </form>
-                                        </section>
+                                        ${candidateOBJ.title}                                                                                
                                 </div>
+                                
                             </div>
+                                <section id="CommentSection">                                           
+                                    <br/><br/>
+                                    Add Comment:
+                                    <form action="Comment" method="post">
+                                        <!-- <input id="commentText" type="text"/> -->
+                                        <textarea id="commentText" name="comment">
+                                        </textarea>
+                                        <section id="GoodBad">
+                                            <input type="radio" checked="checked" name="goodBad" value="1"><img id="positiveInput" src="Images/thumb up.png"/>
+                                            <input type="radio" name="goodBad" value="0"><img id="negativeInput" src="Images/thumb down.png"/>
+                                            <!-- <input type="radio" name="goodBad" value="-1">n/a -->                                            
+                                        </section>
+                                        <input id="postCommentButton" type="submit" value="Post"/>
+                                    </form>
+                                </section>
                         <!--</div>-->
                     </section>
                  </section>

@@ -86,7 +86,7 @@
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
-                        <div id="listTitle"> 
+                        <div id="listTitleDocument"> 
                             <!--&lt; Description based on current selection level &gt;-->
                             Document Type
                         </div>

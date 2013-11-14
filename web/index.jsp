@@ -94,7 +94,7 @@
                     <section id="dataHeader">
                         <div id="listTitle2">                             
                             <!-- &lt; Pipeline Information &gt; -->
-                            ${pipeline.name}
+                            Pipeline Description
                         </div>
                     </section>  
                     <section id="mainSectionContent">
@@ -110,6 +110,7 @@
                                         Bronx NY, 10455 apt 2
                                 </div>
                             </div>-->       
+                             <div id="pipelinename">${pipeline.name}</div>
                          <div id="pipelineData">
                             ${pipeline.note}
                          </div>

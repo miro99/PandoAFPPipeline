@@ -104,7 +104,7 @@ html body {
     width: 800px;
     vertical-align: top;
     display: table-cell;
-    background: #F0F0F0;
+/*    background: #F0F0F0;*/
 }
 
 #mainSection {    
@@ -123,15 +123,45 @@ img {
 #listTitle {   
     margin-right: auto;
     margin-left: auto;
+    background: white;
+    width: 90px;
+    color: black;
+}
+
+#listTitleDocument {   
+    margin-right: auto;
+    margin-left: auto;
+    background: white;
+    width: 125px;
+    color: black;
+}
+
+#listTitleDT {   
+    margin-right: auto;
+    margin-left: auto;
+    background: white;
+    width: 135px;
+    color: black;
+}
+
+#listTitleDTCandidate {   
+    margin-right: auto;
+    margin-left: auto;
+    background: white;
+    width: 90px;
+    color: black;
 }
 
 #listTitle2 {    
     
     margin-right: auto;
     margin-left: auto;
+    background: white;
+    width: 160px;
+    color: black;
 }
 
-#titleborder {  
+#titleborder {      
 }
 
 #keywordInput {
@@ -145,7 +175,7 @@ img {
 
 #rightSideHeader {
 
-    width: 100px;
+    width: 200px;
     display: table-cell;
     vertical-align: middle;
     padding-right: 10px;
@@ -183,13 +213,19 @@ img {
 }
 
 #listItemSection {
-    width: 200px;
+    width: 345px;
     padding: 10px;
+    background: #F0F0F0;
+    margin-top: 10px;
+    height: 700px;
 }
 
 #listItemSectionCandidateList {
-    width: 300px;
-    padding: 10px;
+    width: 345px;
+    padding: 10px;  
+    background: #F0F0F0;
+    margin-top: 10px;
+    height: 700px;
 }
 
 #mainSectionContent {    
@@ -334,7 +370,7 @@ a:link {color: black}
 }
 
 #CommentSection {
-    display: table;    
+    text-align: left;
 }
 
 #commentText {
@@ -400,4 +436,18 @@ a:link {color: black}
 
 #tbl {
     width: 350px;
+}
+
+#postCommentButton{
+    text-align: right;
+    margin-top: 5px;
+}
+
+#GoodBad{    
+}
+
+#pipelinename{   
+    text-align: left;
+    font-size: x-large;
+    color: blue;
 }
