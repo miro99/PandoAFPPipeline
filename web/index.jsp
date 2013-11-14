@@ -38,8 +38,13 @@
 
                 <section id="listItemSectionCandidateList">
                     <Table id="tbl">
+                        <tr>
+                            <th class="tableHeader">Name</th>
+                            <th class="tableHeader">Comment</th>
+                            <th class="tableHeader">ETS</th>
+                        </tr>
                         <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
-                            <tr>
+                            <tr>                                
                                 <div class="listItem">
                                    <td>
                                        <div class="wordWrap">
@@ -47,13 +52,15 @@
                                                 ${item.lastName}, ${item.firstName}
                                            </a>
                                        </div>
-                                    </td>
-                                   
+                                    </td>                                          
                                     <jsp:include page="Reusable_Parts/PositiveNegativeCommentCount.jsp">
                                         <jsp:param name="candidateID" value="${item.id}"/>
                                         <jsp:param name="positiveCount" value="${item.positiveCommentCount}"/>
                                         <jsp:param name="negativeCount" value="${item.negativeCommentCount}"/>
                                     </jsp:include>
+                                    <td id="rankNumber">
+                                        ${item.rank}
+                                    </td>
                                 </div>
                             </tr>
                         </c:forEach>
