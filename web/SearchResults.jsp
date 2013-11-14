@@ -60,9 +60,11 @@
             </section>
         </form>          
             
-             <section id="breadcrumb"> 
-                 <!-- Branch 2 -->
-            </section>
+            <section id="breadcrumb">
+                <!-- <a href="foo.com">PipeLineName</a> &gt; <a href="foo.com">AJ Miro</a> &gt; Resume -->
+                <a href="index.jsp?pipeline=${pipeline.id}"> ${pipeline.name} </a> &gt;  
+                ${candidateOBJ.lastName}, ${candidateOBJ.firstName}
+            </section>      
             
             <section id="dataSectionImageOnly">                
                 <section id="mainSectionImageOnly">
