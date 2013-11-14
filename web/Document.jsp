@@ -35,14 +35,9 @@
                     </section>  
                            
                     <section id="listItemSection">
-                        <!-- <div class="listItem"><a href="foo.com"> Miro, AJ </a></div>
-                        <div class="listItem"><a href="foo.com">Dub, Adam</a></div>
-                        <div class="listItem"><a href="foo.com">Dub, Eitan</a></div> -->
-                            
                         <c:forEach var="item" items="${documenttype.documents}" varStatus="loop">
                             <div class="listItem">
                                <a href="DocumentView?candidate=${candidateOBJ.id}&document=${item.id}&page=1">
-                                <!-- <a href="DocumentImage?candidate=${candidateOBJ.id}&documentID=${item.id}&page=1"> -->
                                     ${item.name}
                                 </a>                                     
                             </div>
@@ -52,29 +47,14 @@
                 </section>          
                 <section id="mainSection">
                     <section id="dataHeader">
-                        <div id="listTitleDocument"> 
-                            <!--&lt; Description based on current selection level &gt;-->
+                        <div id="listTitleDocument">                             
                             <span id="backgroundHighlight">Document Type</span>
                         </div>
                     </section>  
                     <section id="mainSectionContent">
-                        <!--<div>-->
-                        <!-- <img src='Images/testImage.jpg'/> -->
-                             <!--<div id="candidateDetails">
-                                <div id="imageBorder">                                    
-                                    <img id="candidateImage" src="CandidateImage/?candidate=100"/>
-                                </div>
-                                <div id="candidateData">
-                                        AJ Miro<br/>
-                                        1013 East 156 St<br/>
-                                        Bronx NY, 10455 apt 2
-                                </div>
-                            </div>-->       
-                             <!--<div id="pipelineData">-->
                              <div id="documentTypeData">
                                  ${documenttype.name}
                              </div>
-                        <!--</div>-->
                     </section>
                  </section>
             </section>
