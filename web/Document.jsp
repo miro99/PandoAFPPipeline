@@ -17,7 +17,7 @@
     <body>                                  
         <section id="document">
              <jsp:include page="Reusable_Parts/SiteHeader.jsp">
-                <jsp:param name="pageTitle" value="Document Viewer" />
+                <jsp:param name="pageTitle" value="Candidate Documents" />
             </jsp:include>
         
             <jsp:include page="Reusable_Parts/SearchBar.html"/>

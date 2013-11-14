@@ -18,7 +18,7 @@
         <jsp:useBean id="doctype" class="PandoAFP.DocumentType" scope="session"/>
         <section id="document">
              <jsp:include page="Reusable_Parts/SiteHeader.jsp">
-                <jsp:param name="pageTitle" value="Document Viewer" />
+                <jsp:param name="pageTitle" value="Candidate Document Types" />
             </jsp:include>
         
             <jsp:include page="Reusable_Parts/SearchBar.html"/>       
