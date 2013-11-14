@@ -37,10 +37,6 @@
                 </section>  
 
                 <section id="listItemSectionCandidateList">
-                    <!-- <div class="listItem"><a href="foo.com"> Miro, AJ </a></div>
-                    <div class="listItem"><a href="foo.com">Dub, Adam</a></div>
-                    <div class="listItem"><a href="foo.com">Dub, Eitan</a></div> -->
-
                     <Table id="tbl">
                         <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
                             <tr>
@@ -69,8 +65,7 @@
             </section>          
             <section id="mainSection">
                 <section id="dataHeader">
-                    <div id="listTitle2">                             
-                        <!-- &lt; Pipeline Information &gt; -->
+                    <div id="listTitle2">                                                     
                         <span id="backgroundHighlight">Pipeline Description</span>
                     </div>
                 </section>  
