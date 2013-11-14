@@ -41,7 +41,20 @@
                         <tr>
                             <th class="tableHeader">Name</th>
                             <th class="tableHeader">Comment</th>
-                            <th class="tableHeader">ETS</th>
+                            <th class="tableHeader">
+                            <section id="ETSFilter">
+                                <div id="ETSFilterText"> ETS</div>
+                                <div id="ETSFilterSelect">
+                                    <select>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </section>
+                            </th>
                         </tr>
                         <c:forEach var="item" items="<%=pipeline.getCandidates()%>" varStatus="loop">
                             <tr>                                
