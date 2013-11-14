@@ -61,7 +61,8 @@ html body {
     margin-top: 10px;
     font-size: large;
     padding-left: 10px;
-    color: darkgray
+    color: black;
+    font-weight: bold;
 }
 
 #keyword {
