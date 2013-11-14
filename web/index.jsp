@@ -48,14 +48,12 @@
                                            </a>
                                        </div>
                                     </td>
-                                    <div class="posNegCount">
-                                        <td class="posNegCount">
-                                            &nbsp;&nbsp;<a class="commentCounts" href="ShowComment?candidate=${item.id}"> 
-                                                <img id="InputMainPage" src="Images/thumb up.png">${item.positiveCommentCount}&nbsp;
-                                                <img id="InputMainPage" src="Images/thumb down.png">${item.negativeCommentCount}&nbsp;
-                                            </a>
-                                        </td>
-                                    </div>
+                                   
+                                    <jsp:include page="Reusable_Parts/PositiveNegativeCommentCount.jsp">
+                                        <jsp:param name="candidateID" value="${item.id}"/>
+                                        <jsp:param name="positiveCount" value="${item.positiveCommentCount}"/>
+                                        <jsp:param name="negativeCount" value="${item.negativeCommentCount}"/>
+                                    </jsp:include>
                                 </div>
                             </tr>
                         </c:forEach>
