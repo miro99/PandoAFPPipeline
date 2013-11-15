@@ -102,7 +102,7 @@ public class DocumentType extends Data{
             docs = new Document[0];
             ArrayList<Document> arrDocuments = new ArrayList<Document>();
             while (resultSet.next()) {
-                Document document = new Document(resultSet.getInt("id"), resultSet.getString("name"));
+                Document document = new Document(resultSet.getInt("id"), resultSet.getString("name"), candidate);
                 arrDocuments.add(document);
             }
             docs = arrDocuments.toArray(docs);

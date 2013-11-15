@@ -313,6 +313,8 @@ background-image: linear-gradient(to bottom, #80DB39 0%, #FFFFFF 100%);
 
 #mainSectionContentImageOnly {
     padding-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #mainSectionImageOnly {

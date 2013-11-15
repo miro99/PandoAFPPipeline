@@ -4,6 +4,8 @@
  */
 package PandoAFP;
 
+import java.io.File;
+
 /**
  *
  * @author ajmiro
@@ -16,10 +18,12 @@ public class Document {
     private Candidate candidate;
     private int nextPage = -1;
     private int prevPage = -1;
+    private int numPages = -1;
 
-    protected Document(int id, String name) {
+    protected Document(int id, String name, Candidate c) {
         this.id = id;
         this.name = name;
+        this.candidate = c;
     }
 
     public Document() {
@@ -81,6 +85,20 @@ public class Document {
      */
     public void setPrevPage(int prevPage) {
         this.prevPage = prevPage;
+    }
+
+    /**
+     * @return the numPages
+     */
+    public int getNumPages() {
+        if(numPages == -1){
+            //Get the number of pages in this document
+            StringBuilder pathToFile = new StringBuilder("C:\\Users\\ajmiro.DSG\\Documents\\NetBeansProjects\\PandoAFPPipeline\\web\\Images\\CandidateFiles");
+            pathToFile.append("\\").append(candidate.getId()).append("\\").append(this.id);
+            File f = new File(pathToFile.toString());            
+            numPages = f.list().length;
+        }
+        return numPages;
     }
     
     

@@ -45,14 +45,16 @@
                             <section id="ETSFilter">
                                 <div id="ETSFilterText"> ETS</div>
                                 <div id="ETSFilterSelect">
-                                    <select>
-                                        <option value="All">All</option>
-                                        <option value="5">5</option>
-                                        <option value="4">4</option>
-                                        <option value="3">3</option>
-                                        <option value="2">2</option>
-                                        <option value="1">1</option>
-                                    </select>
+                                    <form action="foo" method="post">
+                                        <select onchange="this.form.submit()">
+                                            <option value="All">All</option>
+                                            <option value="5">5</option>
+                                            <option value="4">4</option>
+                                            <option value="3">3</option>
+                                            <option value="2">2</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </form>
                                 </div>
                             </section>
                             </th>
