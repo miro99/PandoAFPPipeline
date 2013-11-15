@@ -14,7 +14,7 @@
     <body>
         <section id="header">
             <div id="headerColumn1">
-                <img src="Images/Pando%20AFP.png"/>
+                <img src="Images/Pando%20AFP.png" height="30" width="200"/>
             </div>
 
             <div id="headerColumn2">
